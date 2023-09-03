@@ -1,0 +1,48 @@
+{% extends 'main/base.html' %}
+
+
+{% block title %} Contact Us {% endblock %}
+
+{% block content %}
+<div class="container">
+  <form class="row g-3 ">
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label colored-text ">First Name (required)</label>
+      <input type="email" class="form-control" id="inputEmail4">
+    </div>
+    <div>
+    <div class="col-md-6">
+      <label for="inputPassword4" class="form-label colored-text">
+        Last Name (required) </label>
+      <input type="password" class="form-control" id="inputPassword4">
+    </div>
+  </div>
+  <div>
+    <div class="col-6">
+      <label for="inputEmail" class="form-label colored-text "> Email
+        (required) </label>
+      <input type="text" class="form-control" >
+    </div>
+  </div>
+    <div>
+    <div class="col-md-6">
+      <label for="inputTitle" class="form-label colored-text "> Title </label>
+      <input type="text" class="form-control" >
+    </div>
+  </div>
+  <div>
+    <label for="inputMessage" class="form-label colored-text "> Message
+      (required) </label>
+  </div>
+    <div class="form-floating"> 
+      <textarea class="form-control" placeholder="Leave a Message here" id="floatingTextarea2" style="height: 100px"></textarea>
+    </div>
+
+    <div class="col-12">
+      <button type="submit" class="btn  view-button"> submit </button>
+    </div>
+  </form>
+</div>
+
+
+{% endblock %}
