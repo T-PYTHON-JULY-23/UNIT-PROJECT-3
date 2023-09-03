@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+
+
+{% block title %} {{request.user.first_name}} favorite  {% endblock %}
+
+{% block content %}
+
+<h2>{{request.user.first_name}} favorites {{ request.ServerApp.title }}</h2>
+
+{% for request in all %}
+
+    <div class="d-flex gap-2 p-4 m-2">
+        <img src="{{request.ServerApp.image.url }}" class="small-poster object-fit-cover rounded-4" width="50%"/>
+        <div>
+            <h3><a href="#">{{ request.ServerApp.title }}</a></h3>
+            <h5>{{ request.status }}</h5>
+        </div>
+    </div>
+
+{% endfor %}
+
+{% endblock %}

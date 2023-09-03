@@ -1,0 +1,43 @@
+{% extends 'main/base.html' %}
+
+
+{% block title %} All  {% endblock %}
+{%block img%}
+<div class="home" style="
+position: relative;
+height: 100%;
+width: 100%;
+background-image: url('/static/imge/backg.jpg');
+background-size: cover;
+background-repeat:no-repeat;
+">
+{%endblock%}
+{% block content %}
+<body y style="background: linear-gradient( pink, rgb(82, 46, 81))"></body>
+
+<div class="d-flex flex-column justify-content-center align-items-center text-light h-50 pt-3 ">
+    <h1>My Serverce</h1>
+</div>
+<div class="row" >
+    {% for server in servers %}
+        <div class="col-4 mt-4 w-30 mb-5 ">
+            <div class="d-flex flex-column gap-3 border border-1 shadow-5 rounded-4 p-4 mt-1  h-100 justify-content-between bxes"style="background-color: rgba(255, 192, 203, 0.534)">
+                <img src="{{ server.image.url }}" class="rounded-4 object-fit-cover border border-1 book-poster" />
+                <h3>{{ server.title }}</h3>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h6>{{ server.description }}</h6>
+                  
+                    
+                </div>
+                
+                <a href="{% url 'server_app:server_detail_view' server.id %}" class="d-flex justify-content-between text-decoration-none">
+                    <h5>more</h5>
+                    <span class="material-symbols-outlined"> arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    
+    {% endfor %}
+    </div>
+
+    {% endblock %}
