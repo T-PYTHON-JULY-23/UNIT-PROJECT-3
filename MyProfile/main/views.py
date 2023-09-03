@@ -5,4 +5,8 @@ from django.http import HttpRequest , HttpResponse
 
 def home_view(request : HttpRequest):
 
-    return render(request,'main/base.html')
+    return render(request,'main/home.html')
+
+def about_view(request : HttpRequest):
+
+    return render(request,'main/about.html')
