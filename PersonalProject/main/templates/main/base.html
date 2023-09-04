@@ -49,7 +49,9 @@
                     <ul class="dropdown-menu">
                       {% if request.user.is_authenticated %}
                         <li><a class="dropdown-item" href="{% url 'accounts:logout_user_view' %}">Log Out</a></li>
+                        <li><a class="dropdown-item" href="{% url 'accounts:logout_user_view' %}">My Requests</a></li>
                       {% else %} 
+
                         <li><a class="dropdown-item" href="{% url 'accounts:register_user_view' %}">Register</a></li>
                         <li><a class="dropdown-item" href="{% url 'accounts:login_user_view' %}">Log In</a></li>               
                       {% endif %} 

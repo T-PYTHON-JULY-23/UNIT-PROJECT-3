@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Service,ServiceRequest,User
+from .forms import ServiceRequestForm
 from django.http import HttpRequest, HttpResponse
 
 
@@ -28,3 +29,8 @@ def service_request_view(request: HttpRequest):
 
     service = ServiceRequest.objects.all()
     return render(request, 'services/serviceRequest.html', {'form': service})
+
+
+def user_requests_view(request: HttpRequest):
+    service = ServiceRequest.objects.all()
+    return render(request, 'services/userRequests.html', {'form': service})

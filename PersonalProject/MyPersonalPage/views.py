@@ -37,3 +37,11 @@ def GenderClassification(request: HttpRequest):
 
     posts = Post.objects.all()
     return render(request, 'MyPersonalPage/GenderClass.html', {'form': posts})
+
+def photos(request: HttpRequest):
+    photo = Post.objects.all()
+    return render(request, 'MyPersonalPage/photos.html', {'form': photo})
+
+def videos(request: HttpRequest):
+    video = Post.objects.all()
+    return render(request, 'MyPersonalPage/videos.html', {'form': video})
