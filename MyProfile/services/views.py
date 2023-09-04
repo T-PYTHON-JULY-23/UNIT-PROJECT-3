@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from main.models import Service
+from main.models import Service,ServiceRequest
 
 from django.http import HttpRequest , HttpResponse 
 
@@ -36,8 +36,16 @@ def add_service (request :HttpRequest):
 
 
 def book_service(request:HttpRequest , service_id):
-    print(service_id)
-    return redirect("accounts:login_user_view")
+    if not request.user.is_authenticated:
+        return redirect("accounts:login_user_view")
+    
+    service=Service.objects.get(id=service_id)
+    serv=ServiceRequest.objects.filter(user=request.user,service=service)
+    print(len(serv))
+
+    new_service_request=ServiceRequest(service=service, user=request.user )
+    new_service_request.save()
+    return HttpResponse("adddddddd")
     
 
 def update_service(request : HttpRequest, service_id ):
