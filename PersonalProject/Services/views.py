@@ -21,7 +21,7 @@ def add_service_view(request: HttpRequest):
 
         return redirect("Services: service")
 
-    return render(request, 'Services/Service.html', {"form": Service})
+    return render(request, 'Services/addService.html', {"form": Service})
 
 
 def service_request_view(request: HttpRequest):

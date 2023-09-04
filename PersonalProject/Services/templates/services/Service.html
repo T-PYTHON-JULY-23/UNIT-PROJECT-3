@@ -15,7 +15,7 @@
                 <form action="" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <p><a class="btn btn-secondary" href="{%  url 'Services:addService'%}" role="button">Request the service &raquo;</a></p>
+                    <p><a class="btn btn-secondary" href="{%  url 'Services:serviceRequest'%}" role="button">Request the service &raquo;</a></p>
                 </form>
                 </div>
             </div>
