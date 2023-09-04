@@ -1,0 +1,23 @@
+
+{% extends 'main/base.html' %}
+{% block title %} Add new Service{% endblock %}
+{% block content %}
+    <div class="row">     
+        <div class="col colored-text ">
+            <h2>Adding Service</h2>
+            <form  action="{% url 'service:add_Service' %}" method="post" enctype="multipart/form-data" class="d-flex flex-column gap-2">
+                {% csrf_token %} 
+                <label>Title: </label>
+                <input type="text" name="title" class="form-control colored-text " />
+                
+                <label>Description: </label>
+                <textarea name="description" class="form-control colored-text "></textarea> 
+
+                <label>Choose Image: </label>
+                <input type="file" name="image" class="form-control "/>
+                
+                <input type="submit" value="add Service" class="btn btn-lg view-button nav-text mt-3"/>
+            </form>
+        </div>
+    </div>
+{% endblock %}
