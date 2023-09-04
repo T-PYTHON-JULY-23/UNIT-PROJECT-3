@@ -23,7 +23,7 @@
             {% if request.user.is_staff %}
             <div>
                 <a href="{% url 'services:update_service_view' service.id %}"  class="btnDown ">Update</a>
-                <button type="button" class="btnDown " data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                <a href="{% url 'services:delete_service_staff_view' service.id %}"  class="btnDown ">Delete</a>
             </div>
             {% elif request.user.is_authenticated%}
             <a href="{%url 'services:book_service_view' service.id%}" class="btnDown ">Book Serviceb </a>

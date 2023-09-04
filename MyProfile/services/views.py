@@ -98,3 +98,10 @@ def change_status(request :HttpRequest, service_id ):
         service_request.save()
         
     return redirect('services:my_service_request_staff_view')
+
+def delete_service_staff(request:HttpRequest,service_id):
+
+    if  request.user.is_staff:
+        service=Service.objects.get(id=service_id)
+        service.delete()
+        return redirect('services:my_service_request_view')

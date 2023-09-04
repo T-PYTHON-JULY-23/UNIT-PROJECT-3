@@ -16,8 +16,7 @@
 
         <h3>{{service.service.title}} </h3>
         <h4>{{service.status}} </h4>
-        <h4>{{service.service.id}} </h4>
-        <h4>{{service.id}} </h4>
+
 
         {% if not request.user.is_staff%}
         <a href="{% url 'services:delete_service_view' service.id %}" class="btnDown">Delete</a>
