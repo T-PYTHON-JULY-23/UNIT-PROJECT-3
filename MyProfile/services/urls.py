@@ -4,5 +4,8 @@ app_name='services'
 
 
 urlpatterns = [
-    path('my_services/',views.my_services,name='my_services.html')
+    path('services_page/',views.my_services,name='service_view'),
+    path('add_service/',views.add_service,name='add_service_view'),
+    path('update_service/<service_id>/',views.update_service,name='update_service_view'),
+    path('service_details/<service_id>/',views.service_details,name='service_details_view')
 ]

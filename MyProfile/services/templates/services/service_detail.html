@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+
+
+{%block title %}My Services {%endblock%}
+
+{% block con %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container flex-column gap-2 pt-5 ">
+    <h1 class="py-2" >{{ service.title }}</h1>
+
+
+    <div class="row">
+        <div class="col-5"><img src="{{ service.image.url }}" class="rounded-4 w-100" /></div>
+        <div class="col">
+            <p style="font-size: 20px;">{{ service.description }}</p>
+            {% if request.user.is_staff %}
+            <div>
+                <a href="{% url 'services:update_service_view' service.id %}"  class="btnDown ">Update</a>
+                <button type="button" class="btnDown " data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+            </div>
+            {% elif request.user.is_authenticated%}
+            <a href="{%url 'accounts:login_user_view'%}" class="btnDown ">Book Serviceb </a>
+            {%else%}
+            <a href="{%url 'accounts:login_user_view'%}" class="btnDown ">Login to Book Service </a>
+
+            {%endif%}
+
+        </div>
+    </div>
+
+
+
+{%endblock%}

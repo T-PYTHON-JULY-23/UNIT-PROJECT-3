@@ -9,6 +9,8 @@
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
       />
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
       <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
         <script src="{%static 'js/javas.js' %}"></script>
@@ -21,13 +23,30 @@
           <a href="#" class="logo">KHALED</a>
 
           <nav class="navbar">
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#contact">Contect</a>
+            <a href="{%url 'main:home_view'%}" class="active">Home</a>
+            <a href="{%url 'main:about_view'%}">About</a>
+            <a href="{%url 'services:service_view'%}">Services</a>
+            
+            {% if request.user.is_authenticated %}
+            <a href="#contact">My Services</a>
+            <a href="{% url 'accounts:logout_user_view' %}" class="btnDown ">LogOut</a>
+            {% if request.user.is_staff%}
+            <a href="{% url 'services:add_service_view' %}" class="btnDown ">Add Service</a>
+
+            {% endif %}
+            
+
+            {% else %} 
+            <a href="{% url 'accounts:register_user_view' %}" class="btnDown ">Rigester</a>
+            <a href="{% url 'accounts:login_user_view' %}" class="btnDown ">Login</a>
+            {%endif%}
+            
+
           </nav>     
         </header>
           {% block con%}
           {% endblock %}
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
       </body>
 </html>
