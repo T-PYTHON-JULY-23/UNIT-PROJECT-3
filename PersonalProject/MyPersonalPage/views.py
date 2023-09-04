@@ -24,3 +24,16 @@ def MyCV(request: HttpRequest):
 
     posts = Post.objects.all()
     return render(request, 'MyPersonalPage/MyCV.html', {'form': posts})
+
+
+def AiChatBot(request: HttpRequest):
+
+    posts = Post.objects.all()
+    return render(request, 'MyPersonalPage/AIchatbot.html', {'form': posts})
+
+
+
+def GenderClassification(request: HttpRequest):
+
+    posts = Post.objects.all()
+    return render(request, 'MyPersonalPage/GenderClass.html', {'form': posts})

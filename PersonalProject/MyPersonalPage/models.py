@@ -33,11 +33,3 @@ class Comment(models.Model):
     def __str__(self):
         return f"{self.user} on {self.post.title}"
     
-
-
-class Favorate(models.Model):
-    
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    created_at = models.DateTimeField(auto_now_add=True)
