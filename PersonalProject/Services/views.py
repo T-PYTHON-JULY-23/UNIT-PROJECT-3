@@ -26,9 +26,14 @@ def add_service_view(request: HttpRequest):
 
 
 def service_request_view(request: HttpRequest):
-
-    service = ServiceRequest.objects.all()
-    return render(request, 'services/serviceRequest.html', {'form': service})
+    if request.method == 'POST':
+        form = ServiceRequestForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('Services:userRequests')  # Redirect to the posts page after successful submission
+    else:
+        form = ServiceRequestForm()
+    return render(request, 'Services:serviceRequest', {'form': form})
 
 
 def user_requests_view(request: HttpRequest):

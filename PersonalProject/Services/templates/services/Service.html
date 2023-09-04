@@ -10,12 +10,12 @@
         <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
             <div class="col-lg-6 px-0">
               <h1 class="display-4 fst-italic">welcome to the services page!</h1>
-              <p class="lead my-3">Here I offer a unique service which is creating custom chatbots powered by AI. With my easy-to-use platform, you can design a chatbot that fits your needs perfectly. Whether you want a chatbot for customer support, to engage visitors or for whatever you choose it's your call, you can customize its behavior and appearance. Join me today to enhance your website with a personalized AI chatbot that makes interaction with your users a breeze.</p>
+              <p class="lead my-3">Here I offer a unique service which is creating custom chatbots powered by AI. you can design a chatbot that fits your needs perfectly. Whether you want a chatbot for customer support, to engage visitors or for whatever you choose it's your call, you can customize its behavior and appearance.<br> Join me today to enhance your website with a personalized AI chatbot that makes interaction with your users a breeze.</p>
               <div class="slider-text">
                 <form action="" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <p><a class="btn btn-secondary" href="{%  url 'Services:service_request_view'%}" role="button">Request the service &raquo;</a></p>
+                    <p><a class="btn btn-secondary" href="{%  url 'Services:service_request_view'%}" role=button style="background-color:rgb(34, 34, 169); border-color:rgb(34, 34, 169); color:white">Request the service &raquo;</a></p>
                 </form>
                 </div>
             </div>
