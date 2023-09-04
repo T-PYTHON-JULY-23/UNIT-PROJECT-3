@@ -1,0 +1,40 @@
+{%extends 'main/base.html'%}
+
+{%block title%} Update logo  {%endblock%}
+
+
+
+{%block content%}
+
+<div class="row">
+
+  <div class="col">
+      <h2>Update logo</h2>
+
+      <form  action="{% url 'services:logo_update_view' logo.id %}" method="post" enctype="multipart/form-data" class="d-flex flex-column gap-2">
+          {% csrf_token %} 
+          <label>Title: </label>
+          <input type="text" name="title" value="{{ logo.title }}" class="form-control"/>
+          
+          <label>Description: </label>
+          <textarea name="description" class="form-control">{{ logo.description }}</textarea> 
+
+          
+          <div class="d-flex gap-2 align-items-center">
+              <h5>Current Image:</h5>
+              <img src="{{ logo.image.url }}"  class="rounded-4 object-fit-cover book-poster-update" />
+          </div>
+          <input type="file" name="image" class="form-control"/>
+
+          <label>Choose Image: </label>
+
+          <input type="submit" value="update logo" class="btn btn-primary"/>
+
+      </form>
+
+  </div>
+
+</div>
+
+
+  {%endblock%}

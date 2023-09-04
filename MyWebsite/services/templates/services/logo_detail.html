@@ -1,0 +1,39 @@
+{%extends 'main/base.html'%}
+
+{%block title%} Logo Detail {%endblock%}
+
+
+
+{%block content%}
+
+<div class="d-flex flex-column gap-2">
+  <h1>{{ logo.title }}</h1>
+  <div class="d-flex justify-content-end">
+      <div>
+          <a href="{% url 'services:logo_update_view' logo.id %}" class="btn btn-warning">Update</a>
+          <a href="{% url 'services:logo_delete_view' logo.id %}" class="btn btn-danger">Delete</a>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4"><img src="{{ logo.image.url }}" class="rounded-4 w-100" /></div>
+    <div class="col">
+        <div>
+            <h3>{{logo.title}}</h3>
+        
+            <p>{{ logo.description }}</p>
+            <h6><a href="{% if is_requests %}{% url 'services:remove_requests_view' logo.id %}{% else %}{% url 'services:add_requests_view' logo.id %}{% endif %}" class="{% if is_requests %} text-danger {% endif%}"><span class="btn btn-danger">Request</span></a></h6>
+        </div>
+    </div>
+</div>
+
+  
+
+  <hr />
+
+  
+</div>
+
+
+
+  {%endblock%}

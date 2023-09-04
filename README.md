@@ -39,6 +39,7 @@ You can add more fields as needed.
 - status (pending, in_progress, done, canceled)
 You can add more fields as needed.
 
+
 #### Pages in services :
 - Add / update  pages for the Service model.
 - A page to disply your services for the users.
@@ -47,8 +48,18 @@ You can add more fields as needed.
 - A manager page to manage the service requests you receive.
 - A My Requests page so the user can display the services he/she requested and the status of it.
 
+for staff :
+ 1- add page
+ 2- update page
+for users:
+3-detail page
+4- reques page for user
+for admain:
+5-manager page 
 
- 
+
+
+
 
 
 
@@ -80,3 +91,44 @@ You can add more fields as needed.
 ### CSS Animation libraries:
 - https://animate.style
 - https://www.minimamente.com/project/magic/
+
+
+
+
+
+
+
+{% extends 'main/base.html' %}
+
+
+{% block title %} {{request.user.first_name}} requests  {% endblock %}
+
+{% block content %}
+
+<h2>{{request.user.first_name}} requests </h2>
+
+{% for requests in reqs %}
+
+    <div class="d-flex gap-2 p-4 m-2">
+        <img src="{{requests.logo.image.url }}" class="small-poster object-fit-cover rounded-4" />
+        <div>
+            <h3><a href="{% url 'services:logo_detail_view' requests.logo.id %}">{{ requests.logo.title }}</a></h3>
+            <h5>{{ requests.logo.description }}</h5>
+        </div>
+    </div>
+
+{% endfor %}
+
+{% endblock %}
+
+
+
+from django.contrib.auth.models import User
+
+def user_requests_view(request: HttpRequest):
+    user=request.user
+    user_request=Requests.objects.filter(user=user)
+
+
+    return render(request, 'services/requests_page.html',{"reqs":user_request})
+
