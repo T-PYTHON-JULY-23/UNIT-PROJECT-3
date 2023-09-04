@@ -16,11 +16,11 @@ class Service(models.Model):
         return f"{self.title}"
     
 class ServiceRequest(models.Model):
-    status_choices = ((1, "pending"), (2, "in_progress"), (3, "done"), (4, "canceled"),)
+    status_choices = (('Pending', "Pending"), ('In_progress', "In_progress"), ('Done', "Done"), ('Canceled', "Canceled"),)
 
     service=models.ForeignKey(Service,on_delete=models.CASCADE)
     user=models.ForeignKey(User,on_delete=models.CASCADE)
-    status = models.IntegerField(choices=status_choices,default=1)
+    status = models.CharField(choices=status_choices,default='Pending',max_length=12)
 
 
     def __str__(self) -> str:

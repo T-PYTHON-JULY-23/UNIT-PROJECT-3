@@ -1,0 +1,29 @@
+{% extends 'main/base.html' %}
+
+
+{%block title %} My service requests {%endblock%}
+
+{% block con %}
+<section class="services" id="services">
+    <h2 class="heading">
+        My <span>Services</span>
+    </h2>
+    <div class="services_container">
+        {% for service in request.user.servicerequest_set.all %}
+        <h1>{{service.description}}</h1>
+        <div class="services-box">
+        <img src="{{service.image.url}}" class="img-thumbnail w-50 " alt="">
+
+        <h3>{{service.service.title}} </h3>
+        <h4>{{service.status}} </h4>
+        <h4>{{service.service.id}} </h4>
+        <h4>{{service.id}} </h4>
+
+        {% if not request.user.is_staff%}
+        <a href="{% url 'services:delete_service_view' service.id %}" class="btnDown">Delete</a>
+        {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{%endblock%}
