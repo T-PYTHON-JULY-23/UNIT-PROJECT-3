@@ -1,0 +1,90 @@
+{% extends 'main/base.html' %}
+
+{% block body %}
+
+
+
+
+<section id="reviews" class="full-height px-lg-5">
+    <div class="container">
+
+        <div class="row pb-4" data-aos="fade-up">
+            <div class="col-lg-8">
+                <h6 class="text-brand">REVIEWS</h6>
+                <h1>What our subscribers say</h1>
+            </div>
+        </div>
+
+        <div class="row gy-4">
+
+            <div class="col-md-4" data-aos="fade-up">
+
+                <div class="review shadow-effect bg-base p-4 rounded-4">
+                    <div class="text-brand h5">
+                        <i class="las la-star"></i>
+                        <i class="las la-star"></i>
+                        <i class="las la-star"></i>
+                        <i class="las la-star"></i>
+                        <i class="las la-star"></i>
+                    </div>
+                    <p class="my-3">{{ comment.name }}</p>
+                    <div class="person">
+                        <h5 class="mb-0">{{ comment.content }}</h5>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <h4 class="text-white mb-auto">Comments</h4>
+    <div class="mt-4">
+
+
+        {% for comment in comments %}
+            <div class="d-flex flex-column gap-1 border border-1 rounded p-4 mt-3">
+                <h4 class="text-white mb-auto">{{ comment.name }}</h4>
+                <p class="text-white mb-auto">{{ comment.content }}</p>
+            </div>
+            
+        {% endfor %}
+    </div>
+    <div class="container">
+        <div class="form-body" style="display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 200px;
+        margin-bottom: 150px;">
+            <div class="row">
+                <div class="form-holder" >
+                    <div class="form-content">
+                        <div class="form-items" >
+        <form action="{% url 'services:review_view' %}" method="POST" enctype="multipart/form-data">
+            <h3>Adding Review</h3>
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Name:</label>
+                <input type="text" class="form-control " id="exampleFormControlInput1" placeholder="fill in title" name="name">
+            </div>
+    
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Content</label>
+                <textarea class="form-control" id="exampleFormControlInput1" placeholder="fill in Review" name="content"></textarea>
+            </div>
+    
+            <div style="margin-top: 15px;" class="mb-3">
+                <input type="submit" value="Add Service" class="btn btn-primary" />
+            </div>
+    
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+</section>
+{% endblock body %}
+

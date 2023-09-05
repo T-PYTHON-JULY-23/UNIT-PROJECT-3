@@ -1,0 +1,58 @@
+{% extends 'main/base.html' %}
+{% block title %} Contact {% endblock title %}
+
+{% block body %}
+<!-- CONTACT -->
+<section id="contact" class="full-height px-lg-5">
+    <div class="container">
+
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-8 pb-4" data-aos="fade-up">
+                <h6 class="text-brand">CONTACT</h6>
+                <h4 class="text-white mb-auto">Comments</h4>
+    <div class="mt-4">
+
+
+    {% if request.user.is_staff %}
+
+        {% for comment in comments %}
+        <div class="col-12" data-aos="fade-up" data-aos-delay="600">
+            <div class="bg-base p-4 rounded-4 shadow-effect">
+                <h4>{{ comment.user }}</h4>
+                <p class="text-brand mb-2">Subject: {{ comment.subject }}</p>
+                <p class="mb-0">Message: {{ comment.message }}</p>
+            </div>
+        </div>
+            <br>
+        {% endfor %}
+        {% endif %}
+
+    </div>
+
+                <h1>Interested in working together? Let's talk
+                </h1>
+            </div>
+
+            <div class="col-lg-8" data-aos="fade-up" data-aos-delay="300">
+                <form action="{% url 'main:contact_view' %}" class="row g-lg-3 gy-3" method="post">
+                    {% csrf_token %}
+                    <div class="form-group col-12">
+                        <input name="subject" type="text" class="form-control" placeholder="Enter subject">
+                    </div>
+               
+                    <div class="form-group col-12">
+                        <input name="message" type="text" class="form-control" placeholder="Enter message">
+                    </div>
+               
+                    <div class="form-group col-12 d-grid">
+                        <input class="btn btn-brand me-3" type="submit" value="Contact me" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+<!-- //CONTACT -->
+{% endblock body %}
