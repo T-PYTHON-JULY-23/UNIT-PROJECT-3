@@ -1,0 +1,82 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %} Podcast {% endblock %}
+
+{% block content %}
+<div class="container">
+    <style>
+        .podcast-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .podcast-item {
+            flex-basis: calc(20% - 10px); 
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .podcast-item .podcast-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .podcast-item .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .podcast-item .card-text {
+            font-size: 1rem;
+        }
+    </style>
+    <div class="row pt-4">
+        <div class="col-12">
+            <h1 class="text-center p-4  text-warning ">Welcome to Our Podcast</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="podcast-grid">
+                <div class="podcast-item">
+                    <img class="rounded podcast-image" src="{% static 'images/podcast1.jpeg' %}" alt="Podcast 1">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning p-3">Suspenseful Stories</h5>
+                        <p class="card-text">A psychological podcast that follows and analyzes crime threads, taking the listener on a journey of excitement and contemplation of real-life stories.</p>
+                    </div>
+                </div>
+                <div class="podcast-item">
+                    <img class="rounded podcast-image" src="{% static 'images/podcast2.jpeg' %}" alt="Podcast 2">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning p-3">Social Insights</h5>
+                        <p class="card-text">A podcast with a social, psychological, and sometimes philosophical nature, providing enjoyable enrichment.</p>
+                    </div>
+                </div>
+                <div class="podcast-item">
+                    <img class="rounded podcast-image" src="{% static 'images/podcast3.jpeg' %}" alt="Podcast 3">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning p-3">Morning News</h5>
+                        <p class="card-text">A daily news podcast in the morning, providing context to the news that matters in just ten minutes.</p>
+                    </div>
+                </div>
+                <div class="podcast-item">
+                    <img class="rounded podcast-image" src="{% static 'images/podcast4.jpeg' %}" alt="Podcast 4">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning p-3">Inspiring Ideas</h5>
+                        <p class="card-text">The "Abjoura" podcast conveys inspiring ideas through rich episodes, linking the past with the present and the East with the West.</p>
+                    </div>
+                </div>
+                <div class="podcast-item">
+                    <img class="rounded podcast-image" src="{% static 'images/podcast5.jpeg' %}" alt="Podcast 5">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning p-3">Fun and Benefit</h5>
+                        <p class="card-text">Join us every Sunday on the "Fnjan" podcast for a sip of every taste, with fun and benefit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

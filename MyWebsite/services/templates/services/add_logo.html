@@ -1,0 +1,36 @@
+{%extends 'main/base.html'%}
+
+{%block title%} Add logo {%endblock%}
+
+
+
+{%block content%}
+<div class="row">
+
+  <div class="col">
+      <h2>Adding logo</h2>
+
+      <form  action="{% url 'services:add_logo_view' %}" method="post" enctype="multipart/form-data" class="d-flex flex-column gap-2">
+          {% csrf_token %} 
+          <label>Title: </label>
+          <input type="text" name="title" class="form-control" />
+          
+          <label>Description: </label>
+          <textarea name="description" class="form-control"></textarea> 
+
+
+          <label>Choose Image: </label>
+          <input type="file" name="image" class="form-control"/>
+
+          <input type="submit" value="Add logo" class="btn btn-primary"/>
+
+      </form>
+
+  </div>
+
+</div>
+
+
+
+
+  {%endblock%}
