@@ -9,10 +9,12 @@
 <div class="d-flex flex-column gap-2">
   <h1>{{ logo.title }}</h1>
   <div class="d-flex justify-content-end">
+    {% if request.user.is_staff %}
       <div>
           <a href="{% url 'services:logo_update_view' logo.id %}" class="btn btn-warning">Update</a>
           <a href="{% url 'services:logo_delete_view' logo.id %}" class="btn btn-danger">Delete</a>
       </div>
+      {% endif %}
   </div>
 
   <div class="row">

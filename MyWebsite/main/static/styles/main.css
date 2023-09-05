@@ -1,0 +1,11 @@
+.top{
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:1% 40%;
+    background-image: url("/media/videos/home.mp4");
+    min-height: 50vh;
+    background-repeat: no-repeat;
+
+}

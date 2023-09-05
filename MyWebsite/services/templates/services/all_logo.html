@@ -5,13 +5,15 @@
 
 
 {%block content%}
-
+<div class="col-12">
+    <h1 class="text-center p-4  text-warning ">Our services Logo design</h1>
+</div>
 <div class="row">
   {% for logo in logos %}
       <div class="col-4 mt-4">
           <div class="d-flex flex-column gap-3 border border-1 shadow rounded-4 p-4 mt-1  h-100 justify-content-between">
               <img src="{{ logo.image.url }}" class="rounded-4 object-fit-cover border border-1 book-poster" />
-              <h3>{{ logo.title }}</h3>
+              <h3 class="text-center ">{{ logo.title }}</h3>
               
               <a href="{% url 'services:logo_detail_view' logo.id %}" class="d-flex justify-content-between text-decoration-none">
                   <h5>more</h5>

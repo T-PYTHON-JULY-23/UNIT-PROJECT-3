@@ -5,7 +5,8 @@
 
 {% block content %}
 
-<h2 class="text-center">{{request.user.first_name}} profile </h2>
+<h2 class="text-center p-4  text-warning ">{{request.user.first_name}} Profile </h2>
+<div class="border border-warning p-2" style="--bs-border-opacity: .5;">My Requests</div>
 
 {% for requests in request.user.requests_set.all %}
  <div class="col-3 mt-4">
@@ -13,8 +14,8 @@
         
         <img class="rounded-4 w-100"  src="{{requests.logo.image.url }}"  />
         <div>
-            <a href="{% url 'services:logo_detail_view' requests.logo.id %}">{{ requests.logo.title }} </a>
-            <h6> {{requests.status}}</h6>
+            <a href="{% url 'services:logo_detail_view' requests.logo.id %}" >{{ requests.logo.title }} </a>
+            <h6 class="text-success m-3"> O  {{requests.status}}</h6>
         </div>
     </div>
  </div>

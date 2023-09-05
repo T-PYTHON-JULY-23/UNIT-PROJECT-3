@@ -17,7 +17,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary rounded" aria-label="Eleventh navbar example">
         <div class="container">
-          <a class="navbar-brand" href="/">nada</a>
+          <a class="navbar-brand text-warning" href="#" ><img src="/static/images/logo.jpeg" class="bd-placeholder-img rounded-circle" width="50" height="50">  NADA</a> 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -37,24 +37,24 @@
                 <a class="nav-link" href="{% url 'services:all_logo_view' %}">Services</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'services:user_requests_view' %}">my requests</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="{% url 'services:add_logo_view' %}">Add logo</a>
               </li>
-              {% if request.user.is_authenticated %}{{ request.user.first_name }} {% else %}  {% endif %} 
-              <li class="nav-item">
-                {% if request.user.is_authenticated %}
-                <a class="nav-link" href="{% url 'accounts:logout_user_view' %}">Log out</a>
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">{% if request.user.is_authenticated %}{{ request.user.first_name }} {% else %} Register {% endif %} </a>
+                <ul class="dropdown-menu">
+                  {% if request.user.is_authenticated %}
+                    <li><a class="dropdown-item" href="{% url 'services:user_requests_view' %}">My Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'accounts:logout_user_view' %}">Log Out</a></li>
+
+                    
+                  {% else %} 
+                    <li><a class="dropdown-item" href="{% url 'accounts:register_user_view' %}">Register</a></li>
+                    <li><a class="dropdown-item" href="{% url 'accounts:login_user_view' %}">Log In</a></li>               
+                  {% endif %} 
+
+                </ul>
               </li>
-              {% else %} 
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'accounts:login_user_view' %}"> Log in</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="{% url 'accounts:register_user_view' %}">Sign up </a>
-              </li>
-              {% endif %} 
             </ul>
 
           </div>

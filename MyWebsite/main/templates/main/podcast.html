@@ -1,35 +1,82 @@
-{%extends 'main/base.html'%}
+{% extends 'main/base.html' %}
+{% load static %}
 
-{%block title%} Podcast {%endblock%}
+{% block title %} Podcast {% endblock %}
 
+{% block content %}
+<div class="container">
+    <style>
+        .podcast-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
 
+        .podcast-item {
+            flex-basis: calc(20% - 10px); 
+            margin-bottom: 20px;
+            position: relative;
+        }
 
-{%block content%}
+        .podcast-item .podcast-image {
+            width: 100%;
+            height: auto;
+        }
 
-<div class="row pt-4">
-    <div class="col-12 col-md-6 order-2 order-md-1">
+        .podcast-item .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .podcast-item .card-text {
+            font-size: 1rem;
+        }
+    </style>
+    <div class="row pt-4">
+        <div class="col-12">
+            <h1 class="text-center p-4  text-warning ">Welcome to Our Podcast</h1>
+        </div>
     </div>
-    <div class="col-12 col-md-6 g-0 order-1 order-md-2">
-        <img class="w-50 rounded-4" src="/static/images/podcast1.jpeg" />
-        <p> A suspenseful and psychological podcast that follows and analyzes crime threads, taking the listener to many destinations of excitement, thought, and contemplation of the secrets of real-life stories. </p>
+    <div class="row">
+        <div class="col-12">
+            <div class="podcast-grid">
+                <div class="podcast-item">
+                    <img class="rounded podcast-image" src="{% static 'images/podcast1.jpeg' %}" alt="Podcast 1">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning p-3">Suspenseful Stories</h5>
+                        <p class="card-text">A psychological podcast that follows and analyzes crime threads, taking the listener on a journey of excitement and contemplation of real-life stories.</p>
+                    </div>
+                </div>
+                <div class="podcast-item">
+                    <img class="rounded podcast-image" src="{% static 'images/podcast2.jpeg' %}" alt="Podcast 2">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning p-3">Social Insights</h5>
+                        <p class="card-text">A podcast with a social, psychological, and sometimes philosophical nature, providing enjoyable enrichment.</p>
+                    </div>
+                </div>
+                <div class="podcast-item">
+                    <img class="rounded podcast-image" src="{% static 'images/podcast3.jpeg' %}" alt="Podcast 3">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning p-3">Morning News</h5>
+                        <p class="card-text">A daily news podcast in the morning, providing context to the news that matters in just ten minutes.</p>
+                    </div>
+                </div>
+                <div class="podcast-item">
+                    <img class="rounded podcast-image" src="{% static 'images/podcast4.jpeg' %}" alt="Podcast 4">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning p-3">Inspiring Ideas</h5>
+                        <p class="card-text">The "Abjoura" podcast conveys inspiring ideas through rich episodes, linking the past with the present and the East with the West.</p>
+                    </div>
+                </div>
+                <div class="podcast-item">
+                    <img class="rounded podcast-image" src="{% static 'images/podcast5.jpeg' %}" alt="Podcast 5">
+                    <div class="card-body">
+                        <h5 class="card-title text-warning p-3">Fun and Benefit</h5>
+                        <p class="card-text">Join us every Sunday on the "Fnjan" podcast for a sip of every taste, with fun and benefit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-12 col-md-6 g-0 order-1 order-md-2">
-        <img class="w-50 rounded-4" src="/static/images/podcast2.jpeg" />
-        <p> A podcast with a social, psychological, and sometimes philosophical nature, for one destination, the destination of enjoyable enrichment</p>
-    </div>
-    <div class="col-12 col-md-6 g-0 order-1 order-md-2">
-        <img class="w-50 rounded-4" src="/static/images/podcast3.jpeg" />
-        <p>A news podcast every day in the morning , showing you the context of the news that matters to you in ten minutes</p>
-    </div>
-    <div class="col-12 col-md-6 g-0 order-1 order-md-2">
-        <img class="w-50 rounded-4" src="/static/images/podcast4.jpeg" />
-        <p>“Abjoura”podcast, which won the New Media Award for the year 2017 for the extent of its influence and the depth of its topics. Lubna Al-Khamis seeks to convey inspiring ideas to her audience through various episodes, in which she narrates readings, experiences, and rich information, linking the past with the present and the East with the West </p>
-    </div>
-    <div class="col-12 col-md-6 g-0 order-1 order-md-2">
-        <img class="w-50 rounded-4" src="/static/images/podcast5.jpeg" />
-        <p>every Sunday. My guest is Abdul Rahman Abu Maleh .on podcast fnjan we'll take a sip of every taste. There are no standards or specific topics, but what is certain is that there is a lot of fun and benefit here. </p>
-    </div>
-  </div>
-
-
-  {%endblock%}
+</div>
+{% endblock %}
