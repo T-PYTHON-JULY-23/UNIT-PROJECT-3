@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %} Sing up {% endblock%}
+
+{% block content %}
+    <div class="row d-flex flex-column align-items-center text-center pt-5">
+        <div class="col-5 rounded rounded-3" style="background-color: rgb(92, 84, 112); box-shadow: 0 6px 12px rgb(185, 180, 199);">
+            <form action="{% url 'accounts:register_user_view' %}" method="post" >
+                {% csrf_token %}
+                <h2 class="pt-4 pb-2" style=" color: rgb(250, 240, 230);">Sing up</h2>
+                {% if "msg" in  request.GET %}
+                <div class="alert alert-dismissible fade show" style="background-color: rgb(185, 180, 199); color: rgb(92, 84, 112)" role="alert">
+                    <strong>{{request.GET.msg}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                {% endif %}
+                <input type="text" name="first_name" class="form-control mt-3" placeholder="First Name" />
+                <input type="text" name="last_name" class="form-control mt-3" placeholder="Last Name" />
+                <input type="text" name="username" class="form-control mt-3" placeholder="User Name" />
+                <input type="email" name="email" class="form-control mt-3" placeholder="Email Address" />
+                <input type="password" name="password" class="form-control mt-3" placeholder="Password" />
+                <input type="submit" value="Sing up" class="btn mt-4 mb-4"style="background-color: rgb(250, 240, 230); color:rgb(92, 84, 112) ;" />
+
+            </form>
+
+        </div>
+    </div>
+    
+{% endblock %}

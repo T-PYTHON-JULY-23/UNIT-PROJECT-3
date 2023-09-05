@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+
+
+{% block title %} Add {% endblock %}
+
+{% block content %}
+
+<div class="row d-flex flex-column align-items-center pt-5">
+    <div class="col-6 rounded rounded-3" style="background-color: rgb(92, 84, 112); box-shadow: 0 6px 12px rgb(185, 180, 199);" >
+    <form action="{% url 'main:add_service_view' %}" enctype="multipart/form-data"  method="post">
+        {% csrf_token %}
+            <h2 class="text-center pt-4 pb-2" style=" color: rgb(250, 240, 230);">Adding service</h2>
+            {% if msg %}
+            <div class="alert alert-dismissible fade show">
+                style="background-color: rgb(250, 240, 230); color:  rgb(92, 84, 112);" role="alert">
+                <strong>{{msg}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endif %}
+            <label class="form-label" style="color:rgb(250, 240, 230);">Title:</label>
+            <input type="text" name="title" class="form-control">
+            <div class="mb-3">
+                <label class="form-label"style="color:rgb(250, 240, 230) ;">description:</label>
+                <textarea class="form-control" name="description"></textarea>
+            </div>
+            <div class="mb-3">
+                <label style="color:rgb(250, 240, 230);">Choose Image: </label>
+                <input type="file" name="image" class="form-control"/>
+            </div>
+            <div class="text-center">
+            <button type="submit" class="btn mt-4 mb-4" style="background-color: rgb(250, 240, 230); color:rgb(92, 84, 112) ;">Add service</button>
+        </div>
+    </form>
+
+</div>
+{% endblock %}

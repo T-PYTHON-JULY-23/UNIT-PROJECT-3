@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %} Services {% endblock %}
+
+{% block content %}
+<div style="color:rgb(92, 84, 112);" class="pt-3 ">
+    {% if "msg" in  request.GET %}
+    <div class="alert alert-dismissible fade show"
+        style="background-color: rgb(92, 84, 112); color:  rgb(250, 240, 230);" role="alert">
+        <strong>{{request.GET.msg}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    <h3>Discover our Services </h3>
+    <hr />
+</div>
+<div class="row gap-4 m-1">
+    {% for service in services %}
+    <div class="card col-4 mt-4" style="width: 18rem; background-color: rgb(92, 84, 112); color:rgb(250, 240, 230) ;">
+        <img src="{{service.image.url}}" class="card-img-top pt-3" alt="...">
+        <div class="card-body">
+            <h5 class="card-title pb-2">{{ service.title }}</h5>
+            <p class="card-text"> {{ service.publish_date }}</p>
+            <a href="{% url 'main:service_detail_view' service.id %}" class="btn" style="background-color: rgb(250, 240, 230); color:rgb(92, 84, 112) ;">Read more</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
