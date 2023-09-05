@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+
+
+{%block title %}My Services {%endblock%}
+
+{% block con %}
+
+    <section class="services" id="services">
+        <h2 class="heading">
+            My <span>Services</span>
+        </h2>
+        <div class="services_container">
+            {% for service in services%}
+
+            <div class="services-box">
+            <img src="{{service.image.url}}" class="img-thumbnail w-50 " alt="">
+            <h3>{{service.title}} </h3>
+
+            <a href="{% url 'services:service_details_view' service.id %}" class="btnDown">Read More </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+{%endblock%}
