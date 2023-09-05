@@ -1,0 +1,101 @@
+{% extends 'main/base.html' %} {% load static %} {% block title %}Services
+Page{% endblock %} {%block content %}
+<div class="home d-flex flex-column p-4">
+  <div class="intro">
+    <h1 class="rounded box-shadow">
+      With Me you will get the help you need
+    </h1>
+
+    <h3 class="priaf rounded box-shadow">
+      <span> As a highly skilled Full-Stack Developer, </span>
+    </h3>
+    <h3 class="priaf rounded box-shadow">
+      <span>I provide a range of services to help businesses and individuals achieve their digital goals.</span>
+    </h3>
+  </div>
+
+  {% if request.user.is_staff %}
+  <div class="add-service-form">
+    <p>
+      <a
+        class="btn d-flex justify-content-center"
+        data-bs-toggle="collapse"
+        href="#collapseExample"
+        role="button"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        Add Service
+      </a>
+    </p>
+    <div class="collapse" id="collapseExample">
+      <div
+        class="card card-body collapse-form-card"
+        style="background: var(--sidebar-background-color)"
+      >
+        <form
+          action="{% url 'services:add_service_view' %}"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          {% csrf_token %}
+
+          <div class="row">
+            <h2>Add Service Form</h2>
+          </div>
+          <div class="row justify-content-around">
+            <div class="col-5 py-2">
+              <div class="row my-2">
+                <input
+                  type="text"
+                  name="title"
+                  placeholder="Service Title ~ ~"
+                />
+              </div>
+              <div class="row my-2">
+                <textarea name="description">Service Description ~ ~ </textarea>
+              </div>
+            </div>
+            <div class="col-5">
+              <div class="row">
+                <label for="id_publish_date" class="form-label"
+                  >Insert Service Image</label
+                >
+                <input type="file" class="form-control" name="image" />
+              </div>
+            </div>
+            <div class="d-flex justify-content-around">
+              <input
+                class="p-2 rounded text-center"
+                type="submit"
+                value="Add Service"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  {% if is_empty %}
+  <div class="services row row-cols-1 row-cols-md-3 g-4">
+    {% for service in services_list %}
+    <div class="col">
+      <div class="card">
+        <img src="{{service.image.url}}" class="card-img-top" />
+        <div class="card-body">
+          <h5 class="card-title">{{service.title}}</h5>
+          <p class="card-text">{{service.description}}</p>
+          <a
+            href="{% url 'services:service_detail_view' service.id %}"
+            class="see-more-btn text-center rounded p-2"
+            style="display: flow"
+            ><p class="m-0">See More</p></a
+          >
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %} there is no services {% endif %} {%endblock %}
+</div>

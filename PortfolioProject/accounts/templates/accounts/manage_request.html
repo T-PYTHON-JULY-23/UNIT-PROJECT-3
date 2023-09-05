@@ -1,0 +1,54 @@
+{% extends 'main/base.html' %}
+{% block title %} Manage Service Requests {% endblock %}
+{% block content %}
+<div class="row">
+    <div class="w-75 m-auto box-shadow w-25">
+    <div class="row gap-2  justify-content-around">
+  <h2>Welcome Admin, you can manage your requests from here ..</h2>
+      <a class="del-btn w-auto rounded" href="{% url 'accounts:logout_view' %}">logout</a>
+    </div>
+  </div>
+</div>
+<div class="manage-request">
+  {% for status, requests_list in requests %}
+    {% if requests_list %}
+    <h2>{{ status }} Requests</h2>
+    <div class="row my-1 row-cols-1 row-cols-md-3 g-4">
+      {% for request in requests_list %}
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ request.service.title }}</h5>
+            <p class="card-text">{{ request.service.description }}</p>
+          </div>
+
+          <div class="card-footer">
+            <form action="{% url 'services:update_request_status_view' request.id %}" method="post">
+              {% csrf_token %}
+              <select class="form-select" id="id_category" name="status" required>
+                {% for val, status in request.status_list %}
+                <option value="{{ val }}" {% if val == request.status %} selected {% endif %}>{{ status }}</option>
+                {% endfor %}
+              </select>
+              <div class="d-flex p-2 rounded justify-content-center">
+                <input class="p-1 rounded" type="submit" value="Change Status" />
+              </div>
+            </form>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Created at : {{ request.created_at }}</small>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">By : {{ request.user.first_name }}</small>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  {% endfor %}
+
+  <a href="{% url 'accounts:logout_view' %}">Logout</a>
+</div>
+{% endblock %}
+

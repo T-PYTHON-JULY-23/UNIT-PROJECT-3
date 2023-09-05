@@ -1,0 +1,95 @@
+{% extends 'main/base.html' %} {% block title %} Home Page {% endblock %} 
+{%load static %} {%block content %}
+
+<div class="home d-flex flex-column p-4">
+  <div class="intro">
+    <h1 class="rounded box-shadow">
+      Hello, thank you for visiting my portfolio website!
+    </h1>
+
+    <h2 class="priaf rounded box-shadow">
+      <span
+        >I'm Abdulaziz Alzahrani, a highly skilled Full-Stack Developer</span
+      >
+    </h2>
+  </div>
+
+  <div class="my-work d-flex flex-column align-items-start">
+    <h2 class="rounded box-shadow">My Services</h2>
+    <div class="row w-100 row-cols-1 row-cols-md-4 d-flex justify-content-between">
+      {% for service in services %}
+      <div class="col-3">
+        <div class="card h-100">
+          <img src="{{service.image.url}}" class="card-img-top" />
+          <div class="card-body">
+            <h5 class="card-title">{{service.title}}</h5>
+            <p class="card-text">{{service.description}}</p>
+            <a
+              href="{% url 'services:services_view' %}"
+              class="see-more-btn text-center rounded p-2"
+              style="display: flow"
+              ><p class="m-0">See More</p></a
+            >
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <div class="col-1 d-flex align-items-center">
+        <a href="{% url 'services:services_view' %}">
+          <div class="see-more d-flex flex-column align-items-center">
+            <span class="material-symbols-outlined"> east </span>
+            <p class="text-center">See More</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-me">
+    <h1 class="rounded box-shadow">
+      About me!
+    </h1>
+
+    <h6 class="priaf rounded box-shadow">
+      <span
+        >I'm Abdulaziz Alzahrani, a Full-Stack Developer crafting exceptional web experiences. With creativity and tech expertise, I turn ideas into user-friendly apps.
+
+My web journey started with curiosity, now a successful career. I tackle complex challenges, design elegant interfaces, build robust solutions.
+
+Staying current, I deliver innovative tech. I collaborate, write clean code for scalable apps. Beyond coding, I explore tech, engage the community, value continuous learning.
+
+Thanks for visiting my portfolio. Let's push web development boundaries together!</span
+      >
+    </h6>
+  </div>
+  <div class="container">
+  <h2 class="text-center my-4">Languages I Work With</h2>
+  <div class="row text-center justify-content-center gap-4">
+    <div class="col-md-1 col-sm-3 col-4">
+      <img src="{% static 'images/django.png' %}" alt="django" class="img-fluid"/>
+    </div>
+    <div class="col-md-1 col-sm-3 col-4">
+      <img src="{% static 'images/angularjs.png' %}" alt="angularjs" class="img-fluid"/>
+    </div>
+    <div class="col-md-1 col-sm-3 col-4">
+      <img src="{% static 'images/py.png' %}" alt="angularjs" class="img-fluid"/>
+    </div>
+    <div class="col-md-1 col-sm-3 col-4">
+      <img src="{% static 'images/js.png' %}" alt="angularjs" class="img-fluid"/>
+    </div>
+    <div class="col-md-1 col-sm-3 col-4">
+      <img src="{% static 'images/java.png' %}" alt="angularjs" class="img-fluid"/>
+    </div>
+    <div class="col-md-1 col-sm-3 col-4">
+      <img src="{% static 'images/sql.png' %}" alt="angularjs" class="img-fluid"/>
+    </div>
+    <div class="col-md-1 col-sm-3 col-4">
+      <img src="{% static 'images/sass.png' %}" alt="angularjs" class="img-fluid"/>
+    </div>
+    <!-- Add more language logos here -->
+  </div>
+</div>
+
+</div>
+
+{% endblock %}

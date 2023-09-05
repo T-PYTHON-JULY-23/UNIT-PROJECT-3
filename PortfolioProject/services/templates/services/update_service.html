@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %} {% block title %} update
+{{upd_service.title}}service{% endblock %} {% block content %}
+<form
+  action="{% url 'services:service_update_view' upd_service.id %}"
+  method="post"
+  enctype="multipart/form-data"
+>
+  <div class="d-flex flex-column gap-4 align-items-center w-25 m-auto">
+    {% csrf_token %}
+    <h2>Update Service</h2>
+    <div>
+      <input type="text" value="{{upd_service.title}}" name="title" />
+    </div>
+    <div>
+      <textarea name="description" cols="30" rows="10">
+                {{upd_service.description}}
+            </textarea
+      >
+    </div>
+    <div>
+      <div class="card" style="width: 18rem">
+        <img src="{{upd_service.image.url}}" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <input
+            type="file"
+            class="form-control"
+            id="id_publish_date"
+            name="image"
+          />
+        </div>
+      </div>
+    </div>
+    <div>
+        <input type="submit" value="Update">
+    </div>
+  </div>
+</form>
+
+{% endblock %}

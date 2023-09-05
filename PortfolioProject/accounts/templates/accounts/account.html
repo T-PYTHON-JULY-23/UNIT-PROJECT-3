@@ -1,0 +1,65 @@
+{% extends 'main/base.html' %} 
+
+{% block title %}{{user.first_name}} Account{%endblock %} 
+
+{% block content %}
+<div class="row">
+  <div class="w-75 m-auto box-shadow w-25">
+    <div class="row gap-2  justify-content-around">
+      <h2>Welcome, {{user.first_name}} here you can see your requsts and logout ...</h2>
+      <a class="del-btn w-auto rounded" href="{% url 'accounts:logout_view' %}">logout</a>
+    </div>
+  </div>
+  
+  <div class="row flex-column row-cols-1 row-cols-md-3 g-4">
+    <h2> Active Requests</h2>
+    {% for request in requests %}
+    {% if request.status != 'done' %}
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{request.service.title}}</h5>
+          <p class="card-text">{{ request.service.description }}</p>
+        </div>
+
+        <div class="card-footer">
+          <small class="text-muted">{{ request.status }}</small>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted"
+            >Created at : {{ request.created_at }}</small
+          >
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="row flex-column row-cols-1 row-cols-md-3 g-4">
+    <h2> Done Requests</h2>
+    {% for request in requests %}
+    {% if request.status == 'done' %}
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{request.service.title}}</h5>
+          <p class="card-text">{{ request.service.description }}</p>
+        </div>
+
+        <div class="card-footer">
+          <small class="text-muted">{{ request.status }}</small>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted"
+            >Created at : {{ request.created_at }}</small
+          >
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
