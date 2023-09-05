@@ -1,0 +1,12 @@
+{% extends 'home.html'%}
+{% block content%}
+   <h1 style="color: white; margin-top: 40px; text-align: center;">{{request.user.first_name.upper}} Requests</h1>
+   <div class="display_request">
+        {% for req in serviceRequests%}
+        <div class="request_item">
+            <h1 style="color: white; font-size: 28px;"> {{req.service}} </h1>
+            <p style="color: white; font-size: 20px; margin-top: 15px;"> State : {{req.state}} </p>
+        </div>
+    {% endfor %}
+   </div>
+{% endblock%}

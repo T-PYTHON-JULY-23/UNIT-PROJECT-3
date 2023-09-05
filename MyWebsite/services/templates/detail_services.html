@@ -1,0 +1,44 @@
+{% extends 'home.html'%}
+{% block content%}
+<div class="bardetail">
+    <h1>{{service.title}}</h1>
+    <div><span class="material-symbols-outlined">keyboard_arrow_down</span></div>
+    <div class="row mt-5">
+        <div class="col-6">
+            <img src="{{service.image.url}}" style="height: 400px; width: 700px; background-size: cover; border-radius: 35px;">
+        </div>
+        <div class="col-6">
+            <p style=" font-size: 12; margin-top: 60px;">{{service.description}}</p>
+            <p style="margin-top: 90px;">{{service.created_at}}</p>
+        </div>
+    </div>
+    {% if request.user.is_staff %}
+    <div>
+        <a href="{% url 'services:update_services_view' service.id %}" class="btn btn-primary mb-5 mt-5">Update</a>    <!-- Button trigger modal --><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header bg-dark">
+                <h1 class="modal-title fs-5 " id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body bg-dark">
+                Are you sure you want delete this service
+              </div>
+              <div class="modal-footer bg-dark">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a type="button" href="{% url 'services:del_services_view' service.id %}" class="btn btn-danger">Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    {% endif %}
+    <form action="{% url 'services:details_services_view' service.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Send Request" class="btn btn-primary mb-5 mt-5">
+    </form>
+
+</div>
+{% endblock %}

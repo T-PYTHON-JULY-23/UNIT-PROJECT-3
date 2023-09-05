@@ -1,0 +1,23 @@
+{% extends 'home.html'%}
+{% block content%}
+<div class="form_login">
+    <form action="{% url 'services:update_state_view' new_request.id %}" method="post" style="text-align:center;">
+        {% csrf_token %}
+        <h1 style="color: white; margin-top: 50px;" >Update State</h1>
+        <h1><span class="material-symbols-outlined">keyboard_arrow_down</span></h1>
+        <h4>Name service : {{new_request.service.title}}</h4>
+        <h4>User name : {{new_request.user.first_name}}</h4>
+        <h4>User email : {{new_request.user.email}}</h4>
+
+
+        <select name="state" class="mt-3 mb-3" style="width:150px; height:30px;">
+            {% for value, title in new_request.state_choices %}
+                <option value="{{value}}">{{title}}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <input type="submit" class="btn btn-primary" value="update">
+    </form>
+</div>
+
+{% endblock %}
