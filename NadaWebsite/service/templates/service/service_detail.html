@@ -1,58 +1,65 @@
-<!--request-->
 
 {% extends 'main/base.html' %}
 
-{% block title %} Details for service {{ service.title }} {% endblock %}
+{% block title %} detail   {% endblock %}
 
 {% block content %}
-<div class="d-flex flex-column gap-2">
-    <h1>{{ service.title }}</h1>
-    <div class="d-flex justify-content-end">
-        {% if request.user.is_staff %}
-        <div>
-            <a href="{% url 'service:service_update_view' service.id %}" class="btn btn-warning">Update</a>
 
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+<div class="b" id="b">
+
+<div class="b-container m-5 pt-5">
+    <div class="row   p-3">
+       
+        
+        <div class="col-4   backpic2 p-5 ">
+            <img src="{{service.image.url}}" class="z-2 border position-absolute left" width="350vh">
         </div>
-        {%else%}
-        <a href="{% url 'service:service_update_view' service.id %}" class="btn btn-warning">order</a>
 
-        {% endif %}
-
-    </div>
-
-    <div class="row">
-        <div class="col-4"><img src="{{ service.image.url }}" class="rounded-4 w-100" /></div>
-        <div class="col">
-            <div>
-                <h6><a href="" class=""><span class="">my request</span></a></h6>
-                <p>{{ service.description }}</p>
+        <div class="col-8  ps-0 ms-0  dec2">
+            <div class="     backpic2 p-3 ps-4 mt-0  me-0 text-center">
+                <p class="fs-2 title #b "> {{service.title}} </p>
+                <div class="mb-1  nav-text text-center"> create at :{{service.created_at}}</div>
+                <p class="phrase2 ">
+                    {{service.description}}
+                </p>
+                {% if request.user.is_staff %}
+                
+                 <a class="colored-text btn btn-lg view-button " href="{% url 'service:service_update_view' service.id %}">Update </a>
+                 <!-- Button trigger modal -->
+                 <button type="button" class="colored-text btn btn-lg view-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                     Delete
+                 </button>
+                 
+                 <!-- Modal -->
+                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                     <div class="modal-dialog">
+                     <div class="modal-content">
+                         <div class="modal-header">
+                            
+                         <h5 class="modal-title nav-text text-center" id="staticBackdropLabel">Worning</h5>
+                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                         </div>
+                         
+                         <div class="black" id="black">
+                         <div class="modal-body ">
+                         are yoy sure delete this service?
+                         </div>
+                         <div class="modal-footer">
+                         <button type="button" class="colored-text btn btn-lg view-button" data-bs-dismiss="modal">Cnacele</button>
+                         <a class="colored-text btn btn-lg view-button" href="{% url 'service:service_delete_view' service.id %}">Delete</a>
+                     </div>
+                     </div>
+                     </div>
+                 </div>
+                
+              {%else%}
+                <a class="colored-text btn btn-lg view-button " href=" {% if request.user.is_authenticated %}{% url 'service:add_request' service.id %}{%else%}{% url 'users:login_user' %}{% endif %}">Order »</a>
+                {%endif%}
             </div>
-        </div>
-    </div>
 
-    <hr/>
-    
+
+        </div>
+       
+    </div>
 </div>
-
-<!-- Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Book</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Are you sure you want to delete <span class="fw-bold">{{service.title}}</span> ? 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <a href=" {% url 'service:service_delete_view' service.id %}"  class="btn btn-danger">Yes, Delete!</a>
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- End  Modal -->
-
-{% endblock %}
+{%endblock%}

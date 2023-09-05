@@ -36,8 +36,18 @@ body {
   color: aliceblue;
 }
 .btsign:hover,.view-button:hover{
-  background-color: rgb(255, 255, 255) !important;
+  background-color: rgb(99, 100, 100) !important;
 
+}
+
+#b {
+  font-size: 30px;
+  color: aliceblue;
+}
+
+#black
+{
+  color: black;
 }
 
 

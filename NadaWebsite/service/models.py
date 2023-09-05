@@ -11,12 +11,11 @@ class Service(models.Model):
 
 
 class ServiceRequest(models.Model):
-    choices= (("pending",'pendin'),("in_progress","in_progress") ,("done","done"), ("canceled","canceled"))
+    choices= (("pending",'pendin'),("in_progress","in_progress"),("done","done"), ("canceled","canceled"))
     
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
     
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    status=models.CharField(max_length=512, choices=choices )
+    status=models.CharField(max_length=120, choices=choices )
     def __str__(self):
         return f"{self.user.first_name} on {self.service.title}"
-    

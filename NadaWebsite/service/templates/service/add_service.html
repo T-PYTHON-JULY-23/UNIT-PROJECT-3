@@ -8,15 +8,15 @@
             <form  action="{% url 'service:add_Service' %}" method="post" enctype="multipart/form-data" class="d-flex flex-column gap-2">
                 {% csrf_token %} 
                 <label>Title: </label>
-                <input type="text" name="title" class="form-control colored-text " />
+                <input type="text" name="title" class="form-control  " />
                 
                 <label>Description: </label>
-                <textarea name="description" class="form-control colored-text "></textarea> 
+                <textarea name="description" class="form-control "></textarea> 
 
                 <label>Choose Image: </label>
                 <input type="file" name="image" class="form-control "/>
-                
-                <input type="submit" value="add Service" class="btn btn-lg view-button nav-text mt-3"/>
+
+                <input type="submit" value="add Service" class="btn btn-lg view-button nav-text"/>
             </form>
         </div>
     </div>

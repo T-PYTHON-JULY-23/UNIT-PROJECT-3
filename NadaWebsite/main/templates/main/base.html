@@ -16,11 +16,11 @@
                 <div class="col-4 d-flex justify-content-end align-items-center">
                     {% if request.user.is_authenticated%}
                     <a class="nav-link nav-text colored-text me-2">{{request.user.first_name}}</a>
-                    <a class="btn btn-sm btn-outline-secondary nav-text ms-2" href="{%url 'users:logout_user_view'%}">Logout</a>
+                    <a class="btn btn-sm btn-outline-secondary nav-text ms-2" href="{%url 'users:logout_view'%}">Logout</a>
 
                     {%else%}
                     <a class="btn btn-sm btn-outline-secondary nav-text" href="{%url 'users:sign_up'%}">Sign up</a>
-                    <a class="btn btn-sm btn-outline-secondary nav-text ms-2" href="{%url 'users:login'%}">Login</a>
+                    <a class="btn btn-sm btn-outline-secondary nav-text ms-2" href="{%url 'users:login_view'%}">Login</a>
                     {%endif%}
                 </div>
             </div>
@@ -28,8 +28,9 @@
         <div class="nav-scroller py-1 mb-3 border-bottom">
             <nav class="nav nav-underline justify-content-between">
                 <a class="nav-item nav-link link-body-emphasis nav-text" href="{%url 'main:home_view'%}">Home</a>
-                <a class="nav-item nav-link link-body-emphasis nav-text" href="#">About</a>
-                <a class="nav-item nav-link link-body-emphasis nav-text " href="#">Achievements</a>
+                <a class="nav-item nav-link link-body-emphasis nav-text" href="{%url 'main:about_view'%}">About</a>
+                <a class="nav-item nav-link link-body-emphasis nav-text " href="https://www.youtube.com/@nadamusaad2868/featured
+                ">youtube channel</a>
                 <a class="nav-item nav-link link-body-emphasis nav-text" href="{%url 'service:all_services_view'%}">Services</a>
                 <a class="nav-item nav-link link-body-emphasis nav-text" href="#">Business</a>
             </nav>

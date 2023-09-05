@@ -3,30 +3,27 @@ from django.http import HttpRequest, HttpResponse
 from .models import Service , ServiceRequest
 # Create your views here.
 
-
 def add_Service(request: HttpRequest):
-
+    if not request.user.is_staff:
+        return redirect("users:login_view")
+    
     if request.method == "POST":
+        
         #adding a service
         new_Service = Service(title=request.POST["title"], description=request.POST["description"],  image=request.FILES["image"])
         new_Service.save()
-        return redirect("service:add_Service")
-    return render(request, 'service/add_Service.html')
-
+        
+        return redirect("service:all_services_view")
+    
+    return render(request,'service/add_Service.html')
 
 def all_services_view(request: HttpRequest):
-
-
     service= Service.objects.all()
-
     return render(request, "service/services.html", context = {"services" : service})
 
-def service_detail(request: HttpRequest,service_id): 
-    
-    service=Service.objects.get(id=service_id)
-    
+def service_detail(request: HttpRequest,service_id):    
+    service=Service.objects.get(id=service_id)    
     return render(request, "service/service_detail.html",{"service":service})
-
 
 
 def service_update_view(request:HttpRequest, service_id):
@@ -54,7 +51,6 @@ def service_delete_view(request: HttpRequest, service_id):
     return redirect ("service:all_services_view")
 
 
-
 def add_request(request: HttpRequest,service_id):
     
      if not request.user.is_authenticated:
@@ -76,8 +72,7 @@ def user_service_request(request: HttpRequest):
 def users_request(request: HttpRequest):
     requests=ServiceRequest.objects.all()
   
-    return render(request, 'service/requset_users.html',{"requests":requests})
-
+    return render(request, 'service/users_request.html',{"requests":requests})
 
 
 def users_request_update(request: HttpRequest, request_id):

@@ -1,0 +1,35 @@
+
+{% extends 'main/base.html' %}
+
+{% block title %} My Requset  {% endblock %}
+
+
+{% block content %}
+<div class="container-md col-7">
+  <h1 class="p-3 titlehome mb-4"> My Request </h1>
+
+  <table class="table">
+   
+    <thead>
+      <tr>
+        <th scope="col">Service</th>
+        <th scope="col">Status</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      {% for request in requests %}
+      <tr>
+        <td>{{request.service.title}}</td>
+        <td>{{request.status}}</td>
+      
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+  
+</div>
+      </div>
+     
+</div>
+{% endblock %}
