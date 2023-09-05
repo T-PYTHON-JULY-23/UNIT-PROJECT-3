@@ -76,8 +76,10 @@ def update_view(request:HttpRequest, service_id):
 ############
 def all_request_view(request:HttpRequest):
     services = ServiceRequest.objects.all()
+    choices= ServiceRequest.status_choices
+    
 
-    return render(request, "service/all_request.html", context = {"services" : services})
+    return render(request, "service/all_request.html", context = {"services" : services,"choices":choices})
     
 def add_request_view(request:HttpRequest, service_id):
     if not request.user.is_authenticated:
@@ -109,17 +111,3 @@ def request_delete_view(request: HttpRequest, service_id):
 ########################
 
 
-def status_update_view(request:HttpRequest, service_id):
-    
-    if not request.user.is_staff:
-       return redirect("account:login_user_view") 
-    
-    try:
-        service = ServiceRequest.objects.get(id=service_id)
-        if request.method == "POST":
-           service.status = request.POST["status"]
-           service.save()
-           return redirect("service:all_request_view", service_id=service_id)
-    except:
-        return render(request, "main/not_found.html")
-    return render(request, "service/update_status.html", {"service": service})

@@ -12,6 +12,6 @@ urlpatterns = [
     path('request/', views.all_request_view, name="all_request_view"), 
     path('request/delete/<service_id>/', views.request_delete_view, name="request_delete_view"),
     path('request/add/<service_id>/', views.add_request_view, name="add_request_view"),
-    path('updateStatus/<service_id>/', views.status_update_view, name="status_update_view"),
+    
      
 ]

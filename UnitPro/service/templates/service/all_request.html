@@ -14,7 +14,18 @@
                 <img src="{{ srequest.service.image.url }}" class="rounded-4 object-fit-cover border border-1 book-poster" />
                 <h3>{{ srequest.service.title }}</h3>
                 <div class="d-flex justify-content-between align-items-center">
-                    <h6>Status of your service: {{ srequest.status_choices }}</h6>
+                    <h6>Status of your service: {{ srequest.status }}</h6>
+                {% if request.user.is_staff%}
+                   <form action="{% url 'service:all_request_view' %}" method="post" >
+                        {% csrf_token %}
+                        <select name="rating" class="form-select" style="background-color: #f9f0e3;">
+                            {% for value,status in choices %}
+                                <option value="{{value}}">{{status}}</option>
+                            {% endfor %}
+                        </select> 
+                        <input class="btn btn-outline-primary mt-2" type="submit" value="Update Status" />
+                    </form>
+                {% endif %}
                 </div>
             </div>
         </div>
