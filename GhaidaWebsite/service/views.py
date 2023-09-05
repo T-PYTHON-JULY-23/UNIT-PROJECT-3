@@ -57,11 +57,10 @@ def add_request(request: HttpRequest,service_id):
         return redirect("users:login_user")
      
      service=Service.objects.get(id=service_id)
-     #if not ServiceRequest.objects.filter(user=request.user, service=service).exists():
-     if request.method == "POST":
-            new_request = ServiceRequest(user=request.user, service=service,note=request.POST["note"])
-            
-            new_request.save()
+     if not ServiceRequest.objects.filter(user=request.user, service=service).exists():
+        new_request = ServiceRequest(user=request.user, service=service,)
+        
+        new_request.save()
     
      return redirect("service:detail_serv", service_id=service_id)
  

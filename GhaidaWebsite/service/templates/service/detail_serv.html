@@ -47,17 +47,8 @@
                  </div>
                 
               {%else%}
-              <form action="{% url 'service:add_request' service.id %}" method="post" >
-                {% csrf_token %} 
-                <div id="demo1" class="collapse card-text  " > 
-              
-                    <label for="description" class="">description:</label>
-                    <textarea class="form-control" rows="5"  name="note" placeholder="Write  your nots about details of request"></textarea>
-                        </div>
-                
-                <button type="button" class="btn btn btn-outline-secondary pe-5 ps-5 rounded mt-5" data-bs-toggle="collapse" data-bs-target="#demo1" >Add note >></button>
-                <a  type="submit" class="btn btn-outline-light pe-5 ps-5 mt-5 rounded " href=" {% if request.user.is_authenticated %}{% url 'service:add_request' service.id %}{%else%}{% url 'users:login_user' %}{% endif %}">Order »</a>
-              </form>
+              <a  type="submit" class="btn btn-outline-light pe-5 ps-5 mt-5 rounded " href=" {% if request.user %}{% url 'service:add_request' service.id %}{%else%}{% url 'users:login_user' %}{% endif %}">Order »</a>
+
                 {%endif%}
             </div>
 
