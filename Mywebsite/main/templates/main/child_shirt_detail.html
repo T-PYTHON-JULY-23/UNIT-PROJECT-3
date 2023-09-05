@@ -1,0 +1,64 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Details for shirt {{ child_shirt.title }} {% endblock %}
+
+{% block content %}
+
+<div class="d-flex flex-column gap-2">
+    <h2>{{ child_shirt.title }}</h2>
+    <div class="d-flex justify-content-between">
+        <h3>{{child_shirt.price}}</h3>
+  
+        {% if request.user.is_staff %}
+        <div>
+          
+            <a href="{% url 'main:child_shirt_update_view' child_shirt.id %}" class="btn btn-warning">Update</a>
+            <a href="{% url 'main:child_shirt_delete_view' child_shirt.id %}" class="btn btn-danger">Delete</a>
+        </div>
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="col-4 d-flex justify-content-end gap-4">
+            <img src="{{ child_shirt.image.url }}" class="rounded-4 w-100" />
+        </div>
+        <h1><a href="{% if is_product %}len(is_product){% else %}{% url 'main:add_child_shirt_product_view' child_shirt.id %}{% endif %}" class=""><span class="material-symbols-outlined">shopping_cart</span></a></h1>
+  
+        <p class="col">{{ child_shirt.price }}</p>
+    </div>
+    <hr />
+    <h4>Comments</h4>
+    <div class="mt-4">
+        {% for comment in comments %}
+        <div class="d-flex flex-column gap-1 border border-1 rounded p-4 mt-3">
+            <h4>{{comment.user.first_name}}</h4>
+            <h6>{{ comment.created_at }}</h6>
+            <p>{{ comment.content }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row mt-4">
+        <div class="col-6">
+          {% if request.user.is_authenticated %}
+            <form action="{% url 'main:child_shirt_detail_view' child_shirt.id %}" method="post" >
+                {% csrf_token %}
+                
+                <textarea  class="form-control mt-2" name="content"  placeholder="Your comment"></textarea>
+                <label>Rating: </label>
+                <select name="rating" class="form-select">
+                    {% for value, title in Comment.rating_choices %}
+                    <option value="{{value}}">{{title}}</option>
+                    {% endfor %}
+                </select>
+                <input class="btn btn-primary mt-2" type="submit" value="Add Comment" />
+            </form>
+            {%else%}
+            <div>
+              <h5>To comment, Please <a href="{% url 'accounts:login_user_view' %}">sign in</a> , or <a href="{% url 'accounts:register_user_view' %}">sign up</a> </h5>
+  
+            </div>
+            {% endif %}
+        </div>
+    </div>
+  </div>
+
+  {% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+
+{% block title %} update page {{child_shirt.title}} {% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col">
+        <h2>Update shirt</h2>
+        <form  action="{% url 'main:child_shirt_update_view' child_shirt.id %}" method="post" enctype="multipart/form-data" class="d-flex flex-column gap-2">
+            {% csrf_token %}
+            <label>title</label>
+            <input type="text" name="title" value="{{child_shirt.title}}" class="form-control"/>
+            <label>price:</label>
+            <textarea name="price" class="form-control" >{{child_shirt.price}}</textarea>
+            
+            <div class="d-flex gap-2 align-items-center ">
+                <h5>Current Image:</h5>
+                <img src="{{ child_shirt.image.url }}"  class="rounded-4 object-fit-cover shirt-shirter-update  " />
+            </div>
+            <input type="file" name="image" class="form-control"/>
+            <label>Choose Image: </label>
+            
+            <input type="submit" value="Add shirt" class="btn btn-primary"/>
+        </form>
+    </div>
+</div>
+{% endblock %}
