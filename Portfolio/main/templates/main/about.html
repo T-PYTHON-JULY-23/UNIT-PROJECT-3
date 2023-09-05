@@ -1,0 +1,26 @@
+
+{% extends 'main/base.html' %}
+
+{% block title %}about {% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+<section class="about" id="about">
+    <div class="about-img">
+<img src="{% static 'images/hejaz.png'%}">
+</div>
+    <div class="about-text">
+        <h2>About<span>Me</span></h2>
+
+        <h4> Web Developer!</h4>
+        <p>
+            Hey, tech enthusiasts! Get ready to dive into the world of pure technological passion as I introduce myself. 
+        </p>
+
+    </div>
+  
+</section>
+
+{% endblock %}

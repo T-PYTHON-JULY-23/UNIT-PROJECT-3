@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+
+{% block title %}My requests {% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+<section>
+    <div class="container ">
+        <h1 class="sub-title">My<span> Requests</span></h1>
+        
+        <div class="row"><div class="col-sm-12"><table style="width: 100%;" id="example" class="table table-hover table-striped table-bordered dataTable dtr-inline" role="grid" aria-describedby="example_info">
+            <thead>
+           <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 149.2px;" 
+             aria-label="Name: activate to sort column descending" aria-sort="ascending">First Name</th>
+            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 234.2px;" aria-label="Position: activate to sort column ascending">Last Name</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 106.2px;" aria-label="Office: activate to sort column ascending">Service</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 110.2px;" aria-label="Age: activate to sort column ascending">Status</th>
+            <tbody>
+            {% for request in requests %}
+            <tr role="row" class="odd">
+            <td class=" dtr-control sorting_1 " tabindex="0">{{request.user.first_name}}</td>
+            <td class="">{{request.user.last_name}}</td>
+            <td>{{request.service.title}}</td>
+            
+            <td>
+                {{request.status}}
+               </td>
+         
+            </tr>
+            {% endfor %}
+
+        </tbody>
+
+            </table></div></div>
+
+    </div>
+ 
+</section>
+
+{% endblock %}

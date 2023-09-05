@@ -1,0 +1,44 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Add Service {% endblock %}
+
+
+{% block content %}
+<div class="add-form">
+
+    <div class="row">
+
+        <div class="col">
+            <h2>Adding Service</h2>
+
+            <form  action="{% url 'services:add_view' %}" method="post" enctype="multipart/form-data" class="d-flex flex-column gap-2 edit-add-form">
+                {% csrf_token %} 
+                <label>Title: </label>
+                <input type="text" name="title" class="form-control" />
+
+                <label>Icon: </label>
+                <input type="text" name="icon" class="form-control" />
+
+                <label>Description: </label>
+                <textarea name="description" class="form-control"></textarea> 
+
+                <label>Content: </label>
+                <textarea name="content" class="form-control"></textarea> 
+
+
+                <label>Choose Image: </label>
+                <input type="file" name="image" class="form-control"/>
+
+
+                <label>Publish Date:</label>
+                <input type="date" name="publish_date" class="form-control"/>
+                <div class="d-flex justify-content-center align-items-center">
+                <input type="submit" value="Add Service" style= "width:200px" class="btn btn-box"/>
+</div>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}
