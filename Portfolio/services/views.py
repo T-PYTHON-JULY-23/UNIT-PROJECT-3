@@ -72,6 +72,9 @@ def display_view(request: HttpRequest):
 
 
 def my_requests_view(request: HttpRequest):
+ if not request.user.is_authenticated:
+        return redirect("accounts:login_user_view")
+
  service_request = ServiceRequest.objects.filter(user=request.user)
 
  return render(request,"services/my_requests.html",{"requests" : service_request})
