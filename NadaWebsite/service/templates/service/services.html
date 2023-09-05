@@ -2,9 +2,11 @@
 {% block title %} AAll Services {% endblock %}
 {% block content %}
 <div class="row mb-2 ">
+    {% if request.user.is_staff%}
     <div class="text-end">
         <a class="btn btn-outline-warning ms-3 " href="{% url 'service:add_Service' %}">Add Service »</a>
     </div>
+    {%endif%}
     {% for service in services %}
     
     <div class="col-md-4 ">

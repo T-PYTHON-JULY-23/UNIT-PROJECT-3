@@ -29,8 +29,7 @@
             <nav class="nav nav-underline justify-content-between">
                 <a class="nav-item nav-link link-body-emphasis nav-text" href="{%url 'main:home_view'%}">Home</a>
                 <a class="nav-item nav-link link-body-emphasis nav-text" href="{%url 'main:about_view'%}">About</a>
-                <a class="nav-item nav-link link-body-emphasis nav-text " href="https://www.youtube.com/@nadamusaad2868/featured
-                ">youtube channel</a>
+               
                 <a class="nav-item nav-link link-body-emphasis nav-text" href="{%url 'service:all_services_view'%}">Services</a>
 
                 {% if request.user.is_authenticated and not request.user.is_staff %}
