@@ -1,0 +1,52 @@
+{% extends 'main/base.html' %}
+
+{% block title %} All blogs {% endblock %}
+
+{% block content %}
+<h1> Our shirts</h1>
+<div class="container">
+    <div class="row bg-dark">
+        <div class="col-12 text-center"><h1 class="text-light">T-shirts</h1></div>
+    </div>
+<div class="row">
+    {% for shirt in main %}
+    <div class="col-4 mt-4">
+        <div class="d-flex flex-column gap-3 border border-1 shadow rounded-4 p-4 mt-1  h-100 justify-content-between">
+            <img src="{{ shirt.image.url }}" class="rounded-4 object-fit-cover border border-1 " />
+            <h3>{{ shirt.title }}</h3>
+            <p>{{ shirt.price }}</p>
+            
+            <a href="{% url 'main:shirt_detail_view' shirt.id %}" class="d-flex justify-content-between text-decoration-none">more
+            </a>
+            <a href="{% url 'main:add_product_view' shirt.id %}" class="d-flex justify-content-between text-decoration-none"><span class="material-symbols-outlined">shopping_cart</span></a>
+
+        </div>
+    </div>
+        {% endfor %}
+
+</div>
+<hr class="pt-2">
+<div class="container pt-5">
+    <div class="row bg-dark">
+        <div class="col-12 text-center"><h1 class="text-light">Children Shirt</h1></div>
+    </div>
+
+<div class="row">
+    {% for child_shirt in child_shirt %}
+    <div class="col-4 mt-4">
+        <div class="d-flex flex-column gap-3 border border-1 shadow rounded-4 p-4 mt-1  h-100 justify-content-between">
+            <img src="{{ child_shirt.image.url }}" class="rounded-4 object-fit-cover border border-1 " />
+            <h3>{{ child_shirt.title }}</h3>
+            <p>{{ child_shirt.price }}</p>
+            
+            <a href="{% url 'main:child_shirt_detail_view' child_shirt.id %}" class="d-flex justify-content-between text-decoration-none">more </a>
+            <a href="{% url 'main:add_child_shirt_product_view' child_shirt.id %}" class="d-flex justify-content-between text-decoration-none"><span class="material-symbols-outlined">shopping_cart</span></a>
+
+        </div>
+    </div>
+        {% endfor %}
+        
+</div>
+{% endblock %}
+
+
