@@ -171,7 +171,7 @@ box-shadow: 0 0 10px grey;
 .about-img img{
    margin-left:15%;
     max-width:480px;
-    margin-top:23%;
+    margin-top:16%;
     height:auto;
     width:100%;
     border-radius: 4px;
@@ -209,6 +209,7 @@ box-shadow: 0 0 10px grey;
 }
 
 .about-text h2{
+    margin-top: 110px;
     font-size:60px;
 }
 .about-text h2 span{
@@ -223,6 +224,14 @@ box-shadow: 0 0 10px grey;
     margin:15px 0 30px;
 }
 .about-text p{
+    color:aliceblue;
+    font-size:20px;
+    line-height:1.4;
+    margin-bottom: 4rem;
+    padding-right:5%;
+}
+
+.service-content {
     color:aliceblue;
     font-size:20px;
     line-height:1.4;
