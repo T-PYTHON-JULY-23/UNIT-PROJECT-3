@@ -45,7 +45,7 @@ def book_service(request:HttpRequest , service_id):
 
     new_service_request=ServiceRequest(service=service, user=request.user )
     new_service_request.save()
-    return HttpResponse("adddddddd")
+    return redirect("services:my_service_request_view")
     
 
 def update_service(request : HttpRequest, service_id ):
