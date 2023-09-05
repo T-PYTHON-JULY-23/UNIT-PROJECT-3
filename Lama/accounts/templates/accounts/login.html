@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+
+{% block title %} User Log In {% endblock%}
+
+{% block content %}
+<div class="container-fluid py-5" id="services ">
+    <div class="container">
+        <div class="position-relative d-flex align-items-center justify-content-center">
+            <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">log in</h1>
+            <h1 class="position-absolute  text-uppercase" style="color: rgb(233,20,109);">welcome </h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            {% if msg %} 
+                <h5 class="text-white bg-danger p-3">{{msg}}</h5>
+            {% endif %}
+            <form action="{% url 'accounts:login_user_view' %}" method="post" >
+                {% csrf_token %}
+                <input type="text" name="username" class="form-control mt-2" placeholder="User Name" />
+                <input type="password" name="password" class="form-control mt-2" placeholder="Password" />
+
+                <input type="submit" value="Login" class="btn btn1 mt-4" />
+
+            </form>
+
+        </div>
+    </div>
+</div>
+    
+{% endblock %}

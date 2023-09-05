@@ -1,0 +1,37 @@
+{%extends 'main/base.html'%}
+{%block title%}services {%endblock%}
+
+{%block content%}
+<!--title-->
+<div class="container-fluid py-5" id="services ">
+    <div class="container">
+        <div class="position-relative d-flex align-items-center justify-content-center">
+            <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Services</h1>
+            <h1 class="position-absolute  text-uppercase" style="color: rgb(233,20,109);">services </h1>
+        </div>
+    </div>
+</div>
+
+<section class="services bg-light">
+    <div class="container py-5">
+        <div class="row pb-3">
+            {%for service in services%}
+                <div class="col-lg-4 mb-3">
+                    <div class="card  text-center py-3">
+                        <div class="card-body">
+                            <div class="circle">
+                                <span><i class="fas fa-solid fa-code"></i></span>
+                            </div> 
+                                <h4 class="fw-bold pb-2">{{service.title}}</h4>
+                                <h6>Created at : {{service.created_at}}</h6>
+                                <a href="{% url 'services:service_detail_view' service.id %}">
+                                    <input type="submit" value="More" class="btn btn1 "/>
+                                    </a>
+                        </div>
+                    </div>
+                </div>
+            {%endfor%}
+        </div>
+    </div>
+</section>    
+{%endblock%}

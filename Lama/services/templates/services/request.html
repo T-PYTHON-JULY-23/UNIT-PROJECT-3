@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+
+
+{% block title %} {{request.user.first_name}} request  {% endblock %}
+
+{% block content %}
+
+<div class="container-fluid pt-5" id=" request ">
+    <div class="container">
+        <div class="position-relative d-flex align-items-center justify-content-center">
+            <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">{{request.user.first_name}} </h1>
+            <h1 class="position-absolute  text-uppercase" style="color: rgb(233,20,109);">My Request</h1>
+        </div>
+    </div>
+</div>
+<div class="container py-5">
+        <div class="row pb-3">
+{% for requests in requestservice %}
+        <div class="col-lg-4 mb-3">
+            <div class="card  text-center py-3">
+                <div class="card-body">
+                    <div class="circle">
+                        <span><i class="fas fa-desktop"></i></span>
+                    </div> 
+                        <h4 class="fw-bold pb-2">{{requests.service.title}}</h4>
+                        <h6>Created at : {{requests.service.created_at}}</h6>
+                        <h3>{{ requests.status }}</h3>
+                </div>
+            </div>
+        </div>
+{% endfor %}
+</div>
+</div>
+
+
+
+
+
+{% endblock %}

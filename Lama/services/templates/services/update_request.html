@@ -1,0 +1,51 @@
+{% extends 'main/base.html' %}
+
+
+{% block title %} {{request.user.first_name}}   {% endblock %}
+
+{% block content %}
+
+<div class="container-fluid pt-5" id=" request ">
+    <div class="container">
+        <div class="position-relative d-flex align-items-center justify-content-center">
+            <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">{{request.user.first_name}} </h1>
+            <h1 class="position-absolute  text-uppercase" style="color: rgb(233,20,109);">update Request</h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h1>Admin Dashboard</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th class="tcolor">Service</th>
+                    <hr/>
+                    <th class="tcolor">User</th>
+                    <th class="tcolor">Status</th>
+                    <th class="tcolor">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in requestservice %}
+                <tr>
+                    <td class="p-3">{{ request.service.title }}</td>
+                    <td class="p-3">{{ request.user.username }}</td>
+                    <td class="p-3">{{ request.status }}</td>
+                    <td class="p-3">
+                        <form method="post" action="{% url 'services:change_status' request.id %}">
+                            {% csrf_token %}
+                            <select name="status">
+                                <option value="pending" {% if request.status == 'pending' %}selected{% endif %}>Pending</option>
+                                <option value="in_progress" {% if request.status == 'in_progress' %}selected{% endif %}>In Progress</option>
+                                <option value="done" {% if request.status == 'done' %}selected{% endif %}>Done</option>
+                                <option value="canceled" {% if request.status == 'canceled' %}selected{% endif %}>Canceled</option>
+                            </select>
+                            <button type="submit">Change Status</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</div>
+{%endblock%}
