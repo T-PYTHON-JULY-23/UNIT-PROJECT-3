@@ -1,0 +1,53 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color:  #202124;
+        }
+        .form_login{
+            color: white;
+            width: 600px;
+            height: 500px;
+            background-color: #303134;
+            border-bottom: 3px solid #e74854;
+            border-top: 3px solid #e74854;
+            border-radius: 30px;
+            margin-top: 90px;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        h1{
+            text-align: center;
+        }
+        p{
+            margin: top 20px; ;
+
+        }
+        p a{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <form action="{% url 'accounts:registr_view'%}" method="post" class="form_login">
+        {% csrf_token %}
+        <h1>Register</h1> 
+        <input type="text" id="inputPassword5" placeholder="First name" name="first_name" style="padding: 4px ; width: 350px; background-color: transparent; border: none; border-bottom: 1px solid white; color: white; margin-top: 20px;" class="form-control" aria-describedby="passwordHelpBlock"><br>         
+        <input type="text" id="inputPassword5" placeholder="Last name" name="last_name" style="padding: 4px ; width: 350px; background-color: transparent; border: none; border-bottom: 1px solid white; color: white; margin-top: 20px;" class="form-control" aria-describedby="passwordHelpBlock"><br>         
+        <input type="text"  name="username" placeholder="Username" style="padding: 4px ; width: 350px; background-color: transparent; border: none; border-bottom: 1px solid white; color: white; margin-top: 20px;"><br>
+        <input type="email" id="inputPassword5" placeholder="Email" name="email" style="padding: 4px ; width: 350px; background-color: transparent; border: none; border-bottom: 1px solid white; color: white; margin-top: 20px;" class="form-control" aria-describedby="passwordHelpBlock"><br>
+        <input type="password" id="inputPassword5" placeholder="Password" name="password" style="padding: 4px ; width: 350px; background-color: transparent; border: none; border-bottom: 1px solid white; color: white; margin-top: 20px;" class="form-control" aria-describedby="passwordHelpBlock"><br>
+
+        <input type="submit" value="Register" style="background-color: #e74854; color: white; padding: 12px 80px; border: none; border-radius: 35px;margin-top: 30px;">
+    </form>
+</body>
+</html>

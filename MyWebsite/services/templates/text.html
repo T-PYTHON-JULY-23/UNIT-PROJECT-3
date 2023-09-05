@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .typing-animation {
+            overflow: hidden;
+            white-space: nowrap;
+            letter-spacing: 0.15em;
+            animation: typing 10s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+        0% {
+            width: 0;
+        }
+        50% {
+            width: 100%;
+        }
+        100% {
+            width: 0;
+        }
+        }
+
+        @keyframes blink-caret {
+        from, to {
+            border-color: transparent;
+        }
+        50% {
+            border-color: #000;
+        }
+        }
+
+    </style>
+</head>
+<body>
+  <div class="typing-animation">
+    <h1 class="typing-text">Hello, World!</h1>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

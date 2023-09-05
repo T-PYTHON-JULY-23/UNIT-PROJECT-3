@@ -1,0 +1,13 @@
+{% extends 'home.html'%}
+{% block content%}
+<form action="{% url 'services:update_services_view' service.id %}" enctype="multipart/form-data" method="post" class="form_login">
+    {% csrf_token %}
+    <h1 style="text-align: center;">Update Services</h1>
+    <div class="input_form">
+        <input type="text" name="title" placeholder="Title" value="{{service.title}}" style="background-color: transparent; border: none; color: white; border-bottom:1px solid white ; align-items: center; justify-content: center; margin-top: 50px;margin-left: 20px; width: 465px;"><br>
+        <textarea name="description"placeholder="description" id="" cols="50px" style="background-color: transparent; color: white;  margin-top: 30px; margin-left: 20px;">{{service.description}}</textarea><br>
+        <input type="file" name="image" style="background-color: transparent; color: white; margin-top: 30px; margin-left: 20px;"> <img src="{{service.image.url}}" width="70px" hight="70px">
+    </div>
+    <input type="submit" value="Add Service" style="background-color: #e74854; color: white; padding: 12px 80px; border: none; border-radius: 35px;margin-top: 30px;">
+</form>
+{% endblock %}

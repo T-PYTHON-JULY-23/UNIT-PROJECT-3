@@ -1,0 +1,14 @@
+{% extends 'home.html'%}
+{% block content%}
+   <h1 style="color: white; margin-top: 40px; text-align: center;">Requests Management</h1>
+   <div class="display_request">
+        {% for req in serviceRequests%}
+        <div class="request_item">
+            <h1 style="color: white; font-size: 28px;">{{req.user.first_name}}</h1>
+            <h1 style="color: white; font-size: 28px;"> {{req.service}} </h1>
+            <p style="color: white; font-size: 20px; margin-top: 15px;"> State : {{req.state}} </p>
+            <a href="{% url 'services:update_state_view' req.id %}" class="btn btn-primary mt-3 mb-3">update</a>
+        </div>
+    {% endfor %}
+   </div>
+{% endblock%}

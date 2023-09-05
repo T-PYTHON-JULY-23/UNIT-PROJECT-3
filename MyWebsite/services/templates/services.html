@@ -1,0 +1,15 @@
+{% extends 'home.html'%}
+{% block content%}
+<div class="services">
+    <h1 class="title_ser">My Services</h1>
+    <div class="services_item">
+        {% for service in services %}
+        <div class="items col-4">
+            <img src="{{ service.image.url }}" width="350px" height="200px" style="border-radius: 35px; margin-top: 20px; background-size: cover;"/>
+            <h1 class="titem mt-3">{{ service.title}}</h1>
+            <a href="{% url 'services:details_services_view' service.id %}" class="btn btn-primary mb-5 mt-3">More Details</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock%}
