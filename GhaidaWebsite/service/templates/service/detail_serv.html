@@ -1,0 +1,69 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Detail service   {% endblock %}
+
+{% block content %}
+
+<div class="container m-5 pt-5">
+    <div class="row   p-3">
+       
+        
+        <div class="col-3      ">
+            <img src="{{service.image.url}}" class="z-3  position-absolute backpic2 p-5" width="370vh">
+        </div>
+
+        <div class="col-9  ps-0 ms-0  dec2">
+            <div class="     backpic2 p-3 ps-4 mt-0  me-0 text-center">
+                <p class="fs-2 title text-black"> {{service.title}} </p>
+                <div class="mb-1 text-body-secondary text-center"> create at :{{service.created_at}}</div>
+                <p class="phrase2 ">
+                    {{service.description}}
+                </p>
+                {% if request.user.is_staff %}
+                
+                 <a class="btn btn-outline-warning ms-3 " href="{% url 'service:update_serv' service.id %}">Update »</a>
+                 <!-- Button trigger modal -->
+                 <button type="button" class="btn btn-outline-danger ms-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                     Delete »
+                 </button>
+                 
+                 <!-- Modal -->
+                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                     <div class="modal-dialog">
+                     <div class="modal-content">
+                         <div class="modal-header">
+                         <h5 class="modal-title" id="staticBackdropLabel">Worning</h5>
+                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                         </div>
+                         <div class="modal-body">
+                         are yoy sure delete this service
+                         </div>
+                         <div class="modal-footer">
+                         <button type="button" class="btn btn-outline-secondary ms-3" data-bs-dismiss="modal">Cnacele</button>
+                         <a class="btn btn-outline-danger ms-3" href="{% url 'service:delete_serv' service.id %}">Delete »</a>
+                     </div>
+                     </div>
+                     </div>
+                 </div>
+                
+              {%else%}
+              <form action="{% url 'service:add_request' service.id %}" method="post" >
+                {% csrf_token %} 
+                <div id="demo1" class="collapse card-text  " > 
+              
+                    <label for="description" class="">description:</label>
+                    <textarea class="form-control" rows="5"  name="note" placeholder="Write  your nots about details of request"></textarea>
+                        </div>
+                
+                <button type="button" class="btn btn btn-outline-secondary pe-5 ps-5 rounded mt-5" data-bs-toggle="collapse" data-bs-target="#demo1" >Add note >></button>
+                <a  type="submit" class="btn btn-outline-light pe-5 ps-5 mt-5 rounded " href=" {% if request.user.is_authenticated %}{% url 'service:add_request' service.id %}{%else%}{% url 'users:login_user' %}{% endif %}">Order »</a>
+              </form>
+                {%endif%}
+            </div>
+
+
+        </div>
+       
+    </div>
+</div>
+{%endblock%}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{%load static%}
+
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'style/main.css' %}" />
+
+    <title> {% block title %} {% endblock %} </title>
+</head>
+<body>
+    <div class="row">
+        <p class="title text-center"> GHAIDA MESHAL </p>
+    </div>
+   
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+      <div class="col-md-3 mb-2 mb-md-0">
+        <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+          <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+      </div>
+
+      <ul class="nav col-6 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li class="nav-item "><a href="/" class="nav-link px-4 link-secondary">Home</a></li>
+        <li class="nav-item" ><a href="{% url 'main:projects_page' %}" class="nav-link px-4 link-secondary">projct</a></li>
+        <li class="nav-item"><a href="{% url 'main:about_page' %}" class="nav-link px-4 link-secondary">About my</a></li>
+        <li class="nav-item"><a href="{% url 'service:all_service' %}" class="nav-link px-4 link-secondary">Servics</a></li>
+        {% if request.user.is_authenticated and not request.user.is_staff %}
+        <li><a href="{% url 'service:user_serv_request' %}" class="nav-link px-4 link-secondary">My Requset</a></li>
+        {% endif %} 
+        {% if request.user.is_staff %}
+        <li><a href="{% url 'service:users_request' %}" class="nav-link px-4 link-secondary"> Users Requsets</a></li>
+        {% endif %} 
+
+        
+      </ul>
+
+      <div class="col-md-3 text-end">
+        {% if request.user.is_authenticated %}
+        <a href="#" class="btn  me-2  rounded desblog "> {{ request.user.first_name }}</a>
+        <a href="{% url 'users:logout_user' %}" class="btn nav-item me-2">Logout</a>
+        {% else %} 
+        <a href="{% url 'users:login_user' %}" class="btn nav-item me-2">Login</a>
+        <a  href="{% url 'users:register_user' %}"  class="btn me-5">Sign-up</a>
+        {% endif %}  
+
+      </div>
+    </header>
+
+
+    {% block content %}
+       
+    {% endblock %}
+
+    <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+          <li class="nav-item"><a href="#" class="nav-link px-5 text-body-secondary">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-5 text-body-secondary">About Me</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-5 text-body-secondary">Services</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-5 text-body-secondary">Projects</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-5 text-body-secondary">About </a></li>
+        </ul>
+        <p class="text-center text-body-secondary">© 2023 GHAIDA, Inc</p>
+      </footer>
+
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+    <script src="/static/style/main.js"></script>
+</body>
+</html>
