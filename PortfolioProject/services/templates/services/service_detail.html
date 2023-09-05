@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %} {% block title %} {% endblock %} 
+{% block content%}
+<div class="d-flex justify-content-center gap-2">
+  <div>
+      <img src="{{ service.image.url }}" class="rounded">
+  </div>
+
+  <div class="d-flex flex-column justify-content-between">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <h1>{{service.title}}</h1>
+          <p>created at :{{service.created_at}}</p>
+        </div>
+      </div>
+      
+      <div>
+          <div>{{service.description}}</div>
+      </div>
+      <div class="d-flex">
+  {% if request.user.is_staff %}
+  <div class="btn del-btn"><a href="{% url 'services:service_delete_view' service.id %}">delete</a></div>
+  <div class="btn update-btn"><a href="{% url 'services:service_update_view' service.id %}">Update</a></div>
+  {% endif %}
+  <div class="btn request-btn"><a href="{% url 'services:request_service_view' service.id %}">Request This Service</a></div>
+</div>
+  </div>
+</div>
+
+
+{% endblock %}

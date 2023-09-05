@@ -1,0 +1,82 @@
+{% extends 'main/base.html' %} {% block title %}Projects{% endblock %} 
+
+{%block content %} 
+
+{% if request.user.is_staff %}
+<div class="add-service-form">
+  <p>
+    <a
+      class="btn btn-primary"
+      data-bs-toggle="collapse"
+      href="#collapseExample"
+      role="button"
+      aria-expanded="false"
+      aria-controls="collapseExample"
+    >
+      Add Service
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div
+      class="card card-body collapse-form-card"
+      style="background: var(--sidebar-background-color)"
+    >
+      <form
+        action="{% url 'services:add_service_view' %}"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+
+        <div class="row">
+          <h2>Add Service Form</h2>
+        </div>
+        <div class="row justify-content-around">
+          <div class="col-5 py-2">
+            <div class="row my-2">
+              <input type="text" name="title" placeholder="Service Title ~ ~" />
+            </div>
+            <div class="row my-2">
+              <textarea name="description">Service Description ~ ~ </textarea>
+            </div>
+          </div>
+          <div class="col-5">
+            <div class="row">
+              <label for="id_publish_date" class="form-label"
+                >Insert Service Image</label
+              >
+              <input type="file" class="form-control" name="image" />
+            </div>
+          </div>
+          <div class="d-flex justify-content-around">
+            <input
+              class="p-2 rounded text-center"
+              type="submit"
+              value="Add Service"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endif %}
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  {% for project in projects %}
+  <div class="col">
+    <div class="card">
+      <img src="{{project.image.url}}" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{project.name}}</h5>
+        <p class="card-text">{{project.description}}</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted"
+          >{{project.start_date}} to {{project.end_date}}</small
+        >
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
