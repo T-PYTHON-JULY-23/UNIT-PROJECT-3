@@ -1,0 +1,45 @@
+{% extends 'main/base.html' %}
+{% block title %} <title> Register  </title> {% endblock %}
+
+
+
+{% block background %}
+
+<div>
+    <div style="background-image: url('/static/images/add_servisec.jpeg');" class="background effect"></div>
+</div>
+  
+{% endblock %}
+
+
+
+
+{% block content %} 
+
+<div  class="container marging p-3 rounded " style="background-color: white; opacity: 0.8; width: 700px"> 
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-6">
+            <div class="d-flex flex-column justify-content-center align-items-center mt-3 mb-3 ">
+            <h1 style="color:rgb(177, 102, 15);"> Register </h1> 
+            </div>
+
+            <form action="{% url 'accounts:register_page_view'%}" method="post" class="d-flex flex-column justify-content-center align-items-center gap-4">
+                {% csrf_token %} 
+
+                <input type="text" name="first_name" class="form-control " placeholder="First name">
+                <input type="text" name="last_name" class="form-control " placeholder="Last Name">
+                <input type="text" name="username" class="form-control " placeholder="User Name">
+                <input type="email" name="email" class="form-control " placeholder="Email">
+                <input type="password" name="password" class="form-control " placeholder="Password">
+
+                <input type="submit" value="Register" style="background-color:rgb(177, 102, 15); color: white;" class="btn btn-lg mt-4"/>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+

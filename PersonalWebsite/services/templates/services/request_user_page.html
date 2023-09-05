@@ -1,0 +1,43 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} <title> {{request.user.username}} profile </title> {% endblock %}
+
+
+{% block background %}
+
+
+<div class="background effect" style="background-image: url(/static/images/IMG-8953.JPG);"> </div>
+
+{% endblock %}
+
+
+
+{% block content %}
+    <div class="container marging">
+        <div class="row d-flex justify-content-start flex-column">
+                <div class="col">
+                    <div class="icon">
+                        <h2 style="color: white;"> <i class="bi bi-person-circle" ></i> <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16" style="color: black;">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/> </svg> Welcome {{request.user.username}} </h2>
+                        <h3 style="color: white;"> Services that have been requested <span class="material-symbols-outlined arrow"> arrow_drop_down </span> </h3> 
+                    </div>
+                    {% for user_req in user_requests  %}
+                        <div class="card mt-4 " style="background-color: rgb(247, 239, 226);">
+                            <h4 class="card-header"> Discription of the request</h4>
+                            <div class="card-body" >
+                                <p class="card-title" style="font-size: 20px;"> <span class="style" >service title: </span>  {{user_req.service.title}}<p>
+                                <p class="card-text" style="font-size: 20px;"> <span class="style" > Description of service </span>  {{user_req.service.description}}</p>
+                                <p class="card-text" style="font-size: 20px;"> <span class="style"> Description of your problem  </span>  {{user_req.pro_discription}}</p>
+                                <p class="card-text" style="font-size: 20px;"> <span class="style"> Statuse of service  </span> {{user_req.status}} </p>
+                                <p class="card-text" style="font-size: 20px;"> <span class="style"> You request service at </span> {{user_req.created_at}} <p>
+                            </div>  
+                        </div>
+                    {% endfor %} 
+                </div>  
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'main/base.html' %}
+{% block title %} <title> Log in </title> {% endblock %}
+
+
+
+{% block background %}
+
+<div>
+    <div style="background-image: url('/static/images/add_servisec.jpeg');" class="background effect"></div>
+</div>
+  
+{% endblock %}
+
+{% block content %} 
+
+
+<div  class="container marging p-3 rounded " style="background-color: white; opacity: 0.8; width:600px "> 
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-6">
+            {% if msg%}
+            <h4 class="text-white bg-danger pt-2"> {{msg}} </h4>
+            {% endif %}
+            <main class="form-signin w-100 m-auto">
+                <form action="{% url 'accounts:login_page_view'%}" method="post">
+                        {% csrf_token %} 
+                        <div class="d-flex justify-content-center align-items-center"> 
+                            <h1 class="h3 mb-3 fw-normal" style="color: rgb(177, 102, 15);" >Please Log in</h1>
+                        </div>
+                
+                        <div class="form-floating mt-2">
+                            <input type="text" name="username" class="form-control" id="floatingInput" placeholder="@Sarah">
+                            <label for="floatingInput">User name</label>
+                        </div>
+                        <div class="form-floating mt-4">
+                            <input type="password"  name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword">Password</label>
+                        </div>
+                
+                        <div class="form-check text-start my-3">
+                            <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault"> Remember me</label>
+                    </div>
+
+                    <button style="background-color:rgb(177, 102, 15);  color: white;" class="btn btn-lg w-100 py-2" type="submit" style="color:rgb(177, 102, 15);">Log in</button>
+                </form>
+            </main>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+{% endblock %}

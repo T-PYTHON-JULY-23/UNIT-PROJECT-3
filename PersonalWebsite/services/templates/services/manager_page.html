@@ -1,0 +1,95 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} <title> Manager profile </title> {% endblock %}
+
+
+
+{% block background %}
+
+
+<div class="background effect" style="background-color: rgb(247, 228, 198);"> </div>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+    <div class="container_manager ">
+        <div class="row marging_table "> 
+            <div class="row"> 
+                <div class="col-5">
+                    <div class="col border border-2 border-light p-4"> 
+                        <div class="d-flex justify-content-space-around gap-4 mt-4 flex-column "> 
+                            <h2 class="style_table" > <b>   Welcom Manager</b> </h2>
+                            <h5 style=" color:  rgb(32, 77, 32);"> To add a new service  <a href="{% url 'services:add_service_page_view'%}" class="btn btn-light  btn-sm"> <b> Add new service </b></a> </h5>
+                            <h5 style=" color:  rgb(32, 77, 32);" > Servises available in website <a href="{% url 'services:services_page_view' %}" class="btn btn-light  btn-sm"> <b> All Servises</b></a></h5>
+                        </div>
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row marging_table d-flex justify-content-center">
+            <div class="col">
+                    <h2 style="color: rgb(32, 77, 32);"> All Services Request </h2>
+                    {%for service in service_requests %}
+
+                    
+                        <table class="table marging_table " style="background-color: white">
+                            <thead>
+                            <tr>
+                                <th scope="col" class="style_table">Name</th>
+                                <th scope="col"  class="style_table" >Email</th>
+                                <th scope="col " class="style_table"  >Requested Service</th>
+                                <th scope="col" class="style_table"  >Category</th>
+                                <th scope="col" class="style_table"  >User Discription</th>
+                                <th scope="col" class="style_table"  >Servic Request Date</th>
+                                <th scope="col" class="style_table"  >Status</th>
+                                <th scope="col"class="style_table"  >change ststus of request</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td> {{service.user.first_name}}</td>
+                                <td> {{service.user.email}}</td>
+                                <td>{{service.service.title}}</td>
+                                <td>  {{service.service.category}}</td>
+                                <td>  {{service.pro_discription}} </td>
+                                <td>  {{service.created_at}} </td>
+                                <td>   {{service.status}} </td>
+                                <td>  
+                                    
+                                    <form action="{% url 'services:update_status_view' service.id %}" method="post">
+                                        {% csrf_token %}
+                                        <div class="flex-container">
+                                                                
+                                            <label class="required" for="id_status">Status of request service</label>
+                                            
+                                                <select name="status" id="id_status">
+                                                <option value="pending" {% if ser.status == 'pending' %} selected {% endif %}>pending</option>
+                                
+                                            <option value="in_progress"  {% if ser.status == 'in_progress' %} selected {% endif %}>in_progress</option>
+                                            <option value="done"  {% if ser.status == 'done' %} selected {% endif %} >done</option>
+                                            <option value="canceled">canceled</option>
+                                            </select>
+                                            <input type="submit" value="update" class="btn btn-secondary btn-sm">
+                                    </form>
+                                
+                                </td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    {%endfor%}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+

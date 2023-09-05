@@ -1,0 +1,29 @@
+
+{% extends 'main/base.html' %}
+{% block title %} <title> Home </title> {% endblock %}
+
+
+
+
+{% block content %} 
+
+<div class="main-container">
+    <div class="left">
+      <div class="text-content ps-5">
+        <h2 style="color: white;">Welcome to about Lenah wbsite</h2>
+        <p style="color: white;"> in this website we will knowing about my personality , interesting things,achievement and my wish things to do </p>
+        <a href="{% url 'main:about_page_view' %}" class="btn"> Know about me </a>
+      </div>
+    </div>
+
+    <div class="right">
+      <div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
+
+
+
