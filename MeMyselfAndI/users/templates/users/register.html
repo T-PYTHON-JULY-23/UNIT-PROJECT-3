@@ -4,14 +4,17 @@
 
 {% block content %}
 <style>
+  body{
+    background-color: #d4bc9ca1;
+
+  }
     .container{
         font-family: 'Poppins', sans-serif;
         justify-content: center;
-
     }
     .btn{
         width: 250px;
-    
+      border: #ffffff;
     }
     .form-outline input{
         width: 250px;
@@ -24,20 +27,12 @@
         margin-top:10% ;
         justify-content: center;
         font-family: 'Poppins', sans-serif;
-
-    
     }
     .gradient-custom {
     /* fallback for old browsers */
-    background: #f093fb;
+    background-color: #d4bc9ca1;
 
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to bottom right, #939dfb, rgb(51, 101, 165));
-
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to bottom right, #939dfb, rgb(98, 115, 136));
     }
-
     .card-registration .select-input.form-control[readonly]:not([disabled]) {
     font-size: 1rem;
     line-height: 2.15;
@@ -50,17 +45,15 @@
     }
     .gradient-custom-4 {
     /* fallback for old browsers */
-    background: #84fab0;
-
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
-
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, #939dfb, rgb(155, 174, 196));
+    background-color: #d4bc9ca1;
     }
-            </style>
+.btn:hover,
+.btn:focus { 
+  background-color: #381e0871;
+  color: #ffffff;
+}
+  </style>
     
-  
     <section class="vh-100 gradient-custom">
         <div class="container py-5 h-100">
           <div class="row justify-content-center align-items-center h-100">

@@ -66,13 +66,15 @@ def dessert_detail_view(request:HttpRequest, dessert_id):
 
 
 def add_order_view(request:HttpRequest,dessert_id):
+    if not request.user.is_authenticated:
+        return redirect("users:login_user_view")
 
+    dessert = Dessert.objects.get(id=dessert_id)
+    orders = Order.objects.filter(dessert=dessert)
     if request.method == "POST" and request.user.is_authenticated:
         new_order = Order(dessert=dessert, user=request.user,descrption=request.POST["descrption"])
         new_order.save()
 
-    dessert = Dessert.objects.get(id=dessert_id)
-    orders = Order.objects.filter(dessert=dessert)
 
     return render(request, "main/dessert_detail.html", {"dessert" : dessert, "orders":orders})
         

@@ -9,3 +9,5 @@ def home_view(request:HttpRequest):
 def about_view(request:HttpRequest):
     return render(request,'main/about.html')
 
+def maintenance_view(request:HttpRequest):
+    return render(request,'main/maintenance.html')

@@ -48,6 +48,7 @@
     background:#000; 
   }
 .button-18 {
+  text-decoration: none;
   align-items: center;
   background-color: transparent;
   border: 0;
@@ -85,6 +86,7 @@
   color: #ffffff;
 }
 .button-17 {
+  text-decoration: none;
   align-items: center;
   background-color: #381e0886;
   border: 0;
@@ -194,8 +196,8 @@ color:#AE977C;
             <a href="#offcanvas"  class="nav-link menubar" data-toggle="collapse" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"><span class="material-symbols-outlined"> menu</span></a>
           </div>
           <div>{% if not request.user.is_authenticated %} 
-            <a class="btn button-18" href="{% url 'users:login_user_view' %}" >Log In</a>
-            <a class="btn button-17" href="{% url 'users:register_user_view' %}">Register</a>  </div>
+            <a class=" button-18" href="{% url 'users:login_user_view' %}" >Log In</a>
+            <a class=" button-17" href="{% url 'users:register_user_view' %}">Register</a>  </div>
           {% else %}  
           <div class="nav-item dropdown ">
             <a class="nav-link " href="#" data-bs-toggle="dropdown" aria-expanded="false"> {{ request.user.first_name }}<span class="material-symbols-outlined">
@@ -203,11 +205,11 @@ color:#AE977C;
               </span> {% endif %} </a>
             <ul class="dropdown-menu dropdown-content" >
               {% if request.user.is_staff %}
-                <li><a class="dropdown-item" href="#" style="color: #ffffff;">admin dashboard</a></li>
+                <li><a class="dropdown-item" href="{%url 'main:maintenance_view' %}" style="color: #ffffff;">admin dashboard</a></li>
                 <li><a class="dropdown-item" href="{%url 'service:add_dessert_view' %}"style="color: #ffffff;">Add post</a></li>
                 <li><a class="dropdown-item" href="{%url 'users:logout_user_view' %}"style="color: #ffffff;">Log Out</a></li>
               {% elif request.user.is_authenticated %}
-              <li><a class="dropdown-item" href="#">My orders</a></li>
+              <li><a class="dropdown-item" href="{%url 'main:maintenance_view' %}">My orders</a></li>
               <li><a class="dropdown-item" href="{% url 'users:logout_user_view' %}"style="color: #ffffff;">Log Out</a></li> 
               {% else %} 
                 <li><a class="dropdown-item" href="{% url 'users:login_user_view' %}"style="color: #ffffff;">Log In</a></li>
@@ -223,7 +225,7 @@ color:#AE977C;
 
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasLabel">
             <div class="offcanvas-header">
-              <h5 class="offcanvas-title " id="offcanvasLabel">menu </h5>
+              <h5 class="offcanvas-title " id="offcanvasLabel">Menu </h5>
               <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body" >
@@ -232,8 +234,11 @@ color:#AE977C;
                     <li data-bs-dismiss="offcanvas"><a href="#" data-nav-section="home">Home</a></li>
                     <li data-bs-dismiss="offcanvas"><a href="#about" data-nav-section="about">about</a></li>
                     <li data-bs-dismiss="offcanvas"><a href="{%url 'service:all_dessert_view' %}" data-nav-section="design">Posts</a></li>
+                    <li data-bs-dismiss="offcanvas"><a href="https://wa.me/503696557" data-nav-section="design"><span class="material-symbols-outlined">
+                      contact_support
+                      </span> Contact me </a></li>
                     {% if request.user.is_staff %}
-                    <li data-bs-dismiss="offcanvas" ><a href="#" data-nav-section="design">admin dashboard</a></li>
+                    <li data-bs-dismiss="offcanvas" ><a href="{%url 'main:maintenance_view' %}" data-nav-section="design">admin dashboard</a></li>
                     {%endif%}
 
 

@@ -7,7 +7,6 @@
 <style>
   body{
     background-color: rgb(235, 235, 241);
-
     font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
   }
   .image{
@@ -68,7 +67,7 @@
   background-color:#c0a38d;
   width: fit-content;
 }
-.button-18 {
+.button-11 {
    align-items: center;
    background-color: black;
    border: 0;
@@ -97,13 +96,13 @@
    vertical-align: middle;
    width: 320px;
  }
- .button-18:hover,
- .button-18:focus { 
+ .button-11:hover,
+ .button-11:focus { 
    background-color: #381e08;
    color: #ffffff;
  
  }
- .button-18:active {
+ .button-11:active {
    background-color: #381e08;
    color: #ffffff;
  }
@@ -111,8 +110,8 @@
   margin-left: 88%;
   margin-top: -2%;
  }
- .button-17, 
- .button-17:focus {
+ .button-15, 
+ .button-15:focus {
   align-items: center;
    background-color: rgb(197, 83, 83);
    border: 0;
@@ -120,7 +119,7 @@
    box-sizing: border-box;
    color: #ffffff;
  }
- .button-17:hover{
+ .button-15:hover{
   background-color: rgb(197, 70, 70);
 
  }
@@ -142,9 +141,9 @@
     <div class=" rounded-4 p-3 mt-1 row ">
       <div class="row">
         <div class="col">
-          <div class="col delbtn ">
+          <div class="col  ">
             {% if request.user.is_staff %}
-            <a class="btn button-17" href="#" data-bs-toggle="dropdown" aria-expanded="false">Edit Post </a>
+            <a class=" delbtn btn button-15" href="#" data-bs-toggle="dropdown" aria-expanded="false">Edit Post </a>
               <ul class="dropdown-menu">
                   <li><a href="{% url 'service:update_dessert_view' dessert.id %}" class="btn dropdown-item">Update</a></li>
                   <li><button type="button" class="btn dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Post</button></li>

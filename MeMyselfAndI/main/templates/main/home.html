@@ -1,7 +1,7 @@
 {% extends 'main/base.html'%}
 {% load static %}
 
-{% block title %} MeMyselfAndI {% endblock %}
+{% block title %} Dessert Palette {% endblock %}
 
 {% block content %}
 <style>
@@ -29,8 +29,13 @@
         font-weight: 600;
     }
     .btn{
-        background-color: rgba(1, 68, 95, 0.945);
+        background-color: #381e08be;
+        border: none;
+        width: 190px;
     }
+    .btn:hover {
+        background-color: #381e08d2;
+}
     .about{
     margin-top: 10% !important;
     color: #f5f5f5;
@@ -60,10 +65,11 @@ font-weight: 700; }
         <div class="col-lg-5 align-self-end about">
         </div>
         <div class="col-lg-9 align-self-baseline">
-            <p class="text-white-75 mb-5" style="background-color: rgba(134, 166, 212, 0.938); font-size: 35px;"> <!--to about page, here welcome to my world and descrip by 3 or 4 words-->
+            <p class="text-white-75 mb-5" style="background-color:rgb(175 191 215 / 94%);
+            font-size: 35px;"> <!--to about page, here welcome to my world and descrip by 3 or 4 words-->
                 In my spare time, I like to do different things that help me relax and express my creativity. I enjoy coloring as a therapeutic way to express my artistic side. Organizing things helps me feel in control, and trying new foods and places allows me to explore different cultures and experiences. Overall, these activities help me relax, express myself, and enjoy life to the fullest.<br>
-                <span style="color: black;"> Explore my dessert and treat yourself or your loved ones to a sweet experience like no other</span></p>
-  </p>            <a class="btn btn-primary btn-xl" href="{%url 'service:all_dessert_view' %}">Explore Posts</a>
+                <span style="color:#24545c;"> Explore my dessert and treat yourself or your loved ones to a sweet experience like no other</span></p>
+  </p>            <a class="btn btn-primary btn-xl mt-1" href="{%url 'service:all_dessert_view' %}">Explore Posts</a>
 
         </div></div></div>
   
