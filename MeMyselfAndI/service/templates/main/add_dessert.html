@@ -1,0 +1,136 @@
+{% extends 'main/base.html'%}
+{% load static %}
+
+{% block title %} Adding dessert {% endblock %}
+
+
+{% block content %}
+<style>
+    .adding_box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 23px;
+    padding: 34px;
+    background-color: rgba(223, 200, 200, 0.541);
+    color: rgb(26, 66, 53);
+    font-size: 1.40rem;
+    position: absolute;
+    top: 20%;
+    left: 8%;
+    }
+
+</style>
+
+    <style>
+        .container{
+            font-family: 'Poppins', sans-serif;
+            justify-content: center;
+    
+        }
+        .btn{
+            width: 250px;
+        
+        }
+        .form-outline input{
+            width: 250px;
+            background-color: transparent;
+            border-radius: 0%;
+            color: blue;
+            align-items: center;
+            border: none;
+            border-bottom: 2px solid #adadad;
+            margin-top:6% ;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+        }
+        input[class=text] {
+          width: 100%;
+          height: 90px;
+          padding: 12px 20px;
+          margin: 8px 0;
+
+        }
+        .gradient-custom {
+        /* fallback for old browsers */
+background-color: rgb(235, 235, 241);
+
+        }
+    
+        .card-registration .select-input.form-control[readonly]:not([disabled]) {
+        font-size: 1rem;
+        line-height: 2.15;
+        padding-left: .75em;
+        padding-right: .75em;
+    
+        }
+        .card-registration .select-arrow {
+        top: 13px;
+        }
+        .gradient-custom-4 {
+          background-color: rgb(235, 235, 241);
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right, #939dfb, rgb(161, 191, 226));
+  }
+                </style>
+        
+        {% if request.user.is_staff %}
+
+        <section class="vh-100 gradient-custom">
+            <div class="container py-5 h-100">
+              <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9 col-xl-7">
+                  <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                      <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 ">ADDING POST               </h3>
+                      <form action="{% url 'service:add_dessert_view' %}" enctype="multipart/form-data" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                          <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                              <label>Title: </label>
+                              <input class="box_item overflow-auto" type="text" name="title" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6 mb-4 ">
+                            <div class="form-outline">
+                              <label for="exampleFormControlTextarea1"> Instructions:</label>
+                              <textarea  type="text" name="instructions" class="form-control mt-2 box_item text" style="height:100px" ></textarea>
+                            </div>
+                          </div>
+                          <div class="col-md-6 mb-4 ">
+                            <div class="form-outline">
+                              <label for="exampleFormControlTextarea1"> Ingredients:</label>
+                              <textarea type="text" name="ingredients" class="form-control mt-2 text" style="height:100px" ></textarea>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                              <label>Choose Image: </label>
+                              <input type="file" name="image" value="image" id="image" class="form-control"/>
+                            </div>
+                          </div>
+                          <div class="d-flex justify-content-center ">
+                            <button type="submit"
+                              class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Add</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          {%endif%}
+          {% endblock %}
+     

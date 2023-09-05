@@ -1,0 +1,202 @@
+{% extends 'main/base.html'%}
+{% load static %}
+
+{% block title %} Post {% endblock %}
+
+{% block content %}
+<style>
+  body{
+    background-color: rgb(235, 235, 241);
+
+    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+  .image{
+      margin-left: 25%;
+      margin-bottom: 5%;
+      width: 500px;
+      height: 300px; 
+    }
+  .flex_box{
+    width:80%;
+    padding: 3%;
+    column-gap: 5%;
+    row-gap: 5%;
+    align-items: center;
+    justify-content: center;
+    }
+.title{
+  font-size: 30px;
+  left: 70%;
+  margin-left: 10%;
+}
+#title{
+  font-size: 30px;
+  margin-bottom: 7%;
+  margin-left: 25%;
+  background-color:#bd6c2e44;
+  width: fit-content;
+  height: 50px;
+  align-self: center;
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+#date{
+  font-weight:200;
+  font-size: 20px;
+  margin-left: 60%;
+  }
+#ingredients{
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 25px;
+  font-weight: bolder;
+  background-color:#bd6c2e46;
+  width: fit-content;
+}
+#instructions{
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 25px;
+  font-weight: bolder;
+  background-color:#c0a38d5e;
+  width: fit-content;
+}
+#ing{
+  font-size: 20px;
+  background-color:#bd6c2e4b;
+  width: fit-content;
+}
+#ins{
+  font-size: 20px;
+  background-color:#c0a38d;
+  width: fit-content;
+}
+.button-18 {
+   align-items: center;
+   background-color: black;
+   border: 0;
+   border-radius: 100px;
+   color: #ffffff;
+   display: inline-flex;
+   font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+   font-size: 18px;
+   font-weight: 600;
+   justify-content: center;
+   height: 50px;
+   line-height: 20px;
+   width: 170px;
+   margin-left: 30%;
+   min-height: 40px;
+   min-width: 0px;
+   overflow: hidden;
+   padding: 0px;
+   padding-left: 20px;
+   padding-right: 20px;
+   text-align: center;
+   touch-action: manipulation;
+   transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+   user-select: none;
+   -webkit-user-select: none;
+   vertical-align: middle;
+   width: 320px;
+ }
+ .button-18:hover,
+ .button-18:focus { 
+   background-color: #381e08;
+   color: #ffffff;
+ 
+ }
+ .button-18:active {
+   background-color: #381e08;
+   color: #ffffff;
+ }
+ .delbtn{
+  margin-left: 88%;
+  margin-top: -2%;
+ }
+ .button-17, 
+ .button-17:focus {
+  align-items: center;
+   background-color: rgb(197, 83, 83);
+   border: 0;
+   border-radius: 100px;
+   box-sizing: border-box;
+   color: #ffffff;
+ }
+ .button-17:hover{
+  background-color: rgb(197, 70, 70);
+
+ }
+ .modal{
+  position: absolute;
+  top: 30%;
+  left: 30%;
+ }
+ #delbtn:hover{
+  background-color: crimson;
+  color: #ffffff;
+ }
+ 
+</style>
+<div class="container">
+  
+    <p class="row"></p> 
+    <div class=" d-flex flex_box " style="width: 100%;">
+    <div class=" rounded-4 p-3 mt-1 row ">
+      <div class="row">
+        <div class="col">
+          <div class="col delbtn ">
+            {% if request.user.is_staff %}
+            <a class="btn button-17" href="#" data-bs-toggle="dropdown" aria-expanded="false">Edit Post </a>
+              <ul class="dropdown-menu">
+                  <li><a href="{% url 'service:update_dessert_view' dessert.id %}" class="btn dropdown-item">Update</a></li>
+                  <li><button type="button" class="btn dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Post</button></li>
+                </ul>
+              </div>   
+              <div class="col-3" >
+                </div>      
+            </div>
+        </div>
+        {%endif%}
+      <div class="row-2">
+        <div class="col">
+          <img src="{{ dessert.image.url }}" class="rounded-1 image" />    
+        </div>
+      </div>
+        <div class="col " >     
+        <h3 id="title">{{ dessert.title }}</h3>
+        </div>
+         
+      <div class="row">
+       </div>
+      <div class="row mt-4 justify-content-center mr-4 ">
+        <div class="col">
+        <p id="ingredients">Ingredients:<br><p id="ing"> {{ dessert.ingredients }} </p></p>
+        </div>
+        <div class="col">
+        <p id="instructions">Instructions:<br><p id="ins"> {{ dessert.instructions }} </p></p>
+            </div></div>
+           
+                </div>
+             </div>
+          </div>
+      </div>
+    
+  <!-- Modal -->
+  <div class="modal fade modal-dialog modal-dialog-centered" id="deleteModal"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete Post</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          are you sure you want to delete <span class="fw-bold">{{dessert.title}}</span>?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" data-bs-dismiss="modal">cancle</button>
+          <a  id="delbtn" data-bs-dismiss="modal" href="{% url 'service:delete_dessert_view' dessert.id %}" class="btn ">Yes, Delete!</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%endblock%} 

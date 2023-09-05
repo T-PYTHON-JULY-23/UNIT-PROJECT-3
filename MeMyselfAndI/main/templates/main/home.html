@@ -1,0 +1,73 @@
+{% extends 'main/base.html'%}
+{% load static %}
+
+{% block title %} MeMyselfAndI {% endblock %}
+
+{% block content %}
+<style>
+.bg-img{
+   height: 100vh;
+   width: 100vw;
+   object-fit:cover;
+   filter: brightness(.78);
+   position: absolute;
+   top: 0;
+   left: 0;
+   z-index: -1;
+  }
+  .welcome{
+    margin-top: 5% !important;
+    color: #f5f5f5;
+    font-family: 'Poppins', sans-serif;
+    font-size: 35px;
+    height: 100vh;
+    width: 100vw; 
+    }
+    #name{
+        font-size: 45px;
+        background-color: rgb(15 76 76 / 66%);
+        font-weight: 600;
+    }
+    .btn{
+        background-color: rgba(1, 68, 95, 0.945);
+    }
+    .about{
+    margin-top: 10% !important;
+    color: #f5f5f5;
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    background-color: rgb(235, 235, 241);
+font-weight: 700; }
+   
+</style>
+<img class="bg-img" src="{%static 'images/newback.avif'%}">
+<div class="welcome">
+    <div class="row gx-4 gx-lg-5 h-200 align-items-center justify-content-center text-center ">
+        <div class="col-lg-5 align-self-end mt-3">
+            <hr class="divider">
+        </div>
+        <div class="col-lg-8 align-self-baseline ">
+            <p class="text-white-75 mb-5"> <!--to about page, here welcome to my world and descrip by 3 or 4 words-->
+                We're Thrilled to Have You Here at <span id="name">[Dessert Palette]</span>  <br> - Let's Dive In!"            </p>
+            <a class="btn btn-primary btn-xl" href="#about">About me</a>
+        </div></div></div>
+
+
+        
+<section id="about">
+<div class="about">
+    <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center ">
+        <div class="col-lg-5 align-self-end about">
+        </div>
+        <div class="col-lg-9 align-self-baseline">
+            <p class="text-white-75 mb-5" style="background-color: rgba(134, 166, 212, 0.938); font-size: 35px;"> <!--to about page, here welcome to my world and descrip by 3 or 4 words-->
+                In my spare time, I like to do different things that help me relax and express my creativity. I enjoy coloring as a therapeutic way to express my artistic side. Organizing things helps me feel in control, and trying new foods and places allows me to explore different cultures and experiences. Overall, these activities help me relax, express myself, and enjoy life to the fullest.<br>
+                <span style="color: black;"> Explore my dessert and treat yourself or your loved ones to a sweet experience like no other</span></p>
+  </p>            <a class="btn btn-primary btn-xl" href="{%url 'service:all_dessert_view' %}">Explore Posts</a>
+
+        </div></div></div>
+  
+
+</section>
+{%endblock%}
+
