@@ -82,5 +82,5 @@ def users_request_update(request: HttpRequest, request_id):
         service_request.status =request.POST['status']
         service_request.save()
     
-    return redirect("service:users_request")
+        return redirect("service:users_request")
 

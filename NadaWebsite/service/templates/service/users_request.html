@@ -21,19 +21,19 @@
             <tbody>
         
 
-        {% for requeest in requests %}
+        {% for request in requests %}
             <tr>
                 <td>{{request.user.first_name}}</td>
                 <td>{{request.service.title}}</td>
                 <td> 
                 
                 
-                  <form action="{% url 'service:users_request_update'  request.id %}" method="post" >
+                  <form action="{% url 'service:users_request_update' request.id  %}" method="post" >
                         {% csrf_token %} 
                    
                     <div class="d-flex gap-2 align-items-center">
                         <select name="status" class="form-select">
-                            {% for value, title in request.status_choices %}
+                            {% for value, title in request.choices %}
                                 <option value="{{value}}" {% if request.status == value %} selected {% endif%}>{{title}}</option>
                             {% endfor %}
                         </select>
