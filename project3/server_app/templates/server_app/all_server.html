@@ -4,40 +4,46 @@
 {% block title %} All  {% endblock %}
 {%block img%}
 <div class="home" style="
-position: relative;
-height: 100%;
+position: absolute;
 width: 100%;
 background-image: url('/static/imge/backg.jpg');
 background-size: cover;
-background-repeat:no-repeat;
-">
+background-repeat:no-repeat;">
+<style>
+        .card{
+       
+        background: transparent;
+        border:  2px solid rgba(255, 255, 255, .5);
+        border-radius: 20px;
+        backdrop-filter: blur(20px) ;
+        box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+        display: flex;
+      }
+      .btn:hover{
+        background-color: rgb(193, 123, 193);      }
+    
+    
+    </style>
 {%endblock%}
-{% block content %}
-<body y style="background: linear-gradient( pink, rgb(82, 46, 81))"></body>
 
-<div class="d-flex flex-column justify-content-center align-items-center text-light h-50 pt-3 ">
+{% block content %}
+
+<div class="d-flex flex-column justify-content-center align-items-center text-light h-50 pt-5 mb-5 ">
     <h1>My Serverce</h1>
 </div>
-<div class="row" >
-    {% for server in servers %}
-        <div class="col-4 mt-4 w-30 mb-5 ">
-            <div class="d-flex flex-column gap-3 border border-1 shadow-5 rounded-4 p-4 mt-1  h-100 justify-content-between bxes"style="background-color: rgba(255, 192, 203, 0.534)">
-                <img src="{{ server.image.url }}" class="rounded-4 object-fit-cover border border-1 book-poster" />
-                <h3>{{ server.title }}</h3>
-                <div class="d-flex justify-content-between align-items-center">
-                    <h6>{{ server.description }}</h6>
-                  
-                    
-                </div>
-                
-                <a href="{% url 'server_app:server_detail_view' server.id %}" class="d-flex justify-content-between text-decoration-none">
-                    <h5>more</h5>
-                    <span class="material-symbols-outlined"> arrow_forward</span>
-                </a>
-            </div>
-        </div>
-    
-    {% endfor %}
-    </div>
 
-    {% endblock %}
+<div class="row">
+{% for server in servers %}
+    <div class="card animate__animated animate__fadeInRight" style="width: 25rem; margin: 20px; margin-left: 140px ;">
+        <div class="card-body text-light text-center">
+            <img src="{{ server.image.url }}" class="rounded-4 object-fit-cover border border-1 book-poster" width="200rem" />
+            <p class="card-title">{{  server.created_at }}</p>
+            <h3 class="text-light text-center">{{ server.title }}</h3>
+            <h6 class="text-light text-center mb-3">{{ server.description }}</h6>
+            <a href="{% url 'server_app:server_detail_view' server.id %}" class="btn btn-primary">more</a>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

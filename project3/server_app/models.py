@@ -16,3 +16,4 @@ class UserRequest (models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)
     ServerApp=models.ForeignKey(ServerApp, on_delete=models.CASCADE)
     status=models.CharField(max_length=2048,default="Pending", choices=category_choices)
+    description_user=models.TextField()

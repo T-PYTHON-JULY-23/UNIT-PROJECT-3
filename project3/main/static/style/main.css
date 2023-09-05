@@ -2,6 +2,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Arima', cursive;
+font-family: 'Barriecito', cursive;
+font-family: 'Sahitya', serif;
+font-family: 'Tauri', sans-serif;
 }
 
 nav{
@@ -68,11 +72,12 @@ nav{
     font-weight: 600;
 }
 .input-box .icon{
-    color: #ffffff;
+    color: #ffffff15;
     position: absolute;
     right: 8px;
 }
 .btn{
+    background-color: liner-g;
     width: 100%;
     height: 45px;
     background: #162938;
@@ -126,5 +131,10 @@ video{
   
 }
 .boxs{
-    background-color: rgba(255, 192, 203, 0.534);
+    background-color: rgba(201, 156, 205, 0.452);
 }
+.wrapper .display{
+margin-left: 100px;
+}
+
+  

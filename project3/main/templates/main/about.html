@@ -1,0 +1,296 @@
+{% extends 'main/base.html' %}
+        
+
+{% block title %}home{%endblock%}
+
+{%block style%}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    nav{
+        background-color: rgba(193, 183, 205, 0.717);
+    }
+body {
+  font-family: Verdana, sans-serif;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row > .column {
+  padding: 0 8px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  width: 25%;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mySlides {
+  display: none;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+img {
+  margin-bottom: -4px;
+}
+
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 2px 16px;
+  color: white;
+}
+
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+img.hover-shadow {
+  transition: 0.3s;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-box:hover{
+  background-color: rgb(193, 123, 193);
+
+}
+.card-box{
+  background-color: rgba(255, 255, 255, 0.452)
+}
+</style>
+{%endblock%}
+
+{% block content %}
+
+  
+<div class="container" >
+    <div class="row m-4 ">
+        <div class="col-6 pt-5  animate__animated animate__fadeInRight">
+            <h1 >About Me</h1>
+                <div class=" col pt-5 ">
+                    <h4 >Hi, I'm Sarah </h4>
+                    <p>Born in 2003, graduated in 2023 from Princess Noura University,with a degree in programming. I loved my major and would like to learn everything related to programming. My favorite programming languages are Python and Java, and I wish to be a full-stack programmer.</p>
+                    
+                </div>
+        </div> 
+        <div class="col-6 pt-5  animate__animated animate__fadeInRight">
+            <img src="/static/imge/about.jpg" width="115%" style="border-radius: 10px;"/>
+        </div>
+    </div>
+    <p class="text-center mb-5">Let’s get to know each other a little better…</p>
+</div>
+{%block color%}
+<style>
+        .home{
+                background-color: rgb(193, 183, 205);
+        }
+</style>
+{%endblock%}
+<div class="home">
+  <div class="container " style="background-color: rgb(193, 183, 205);">
+    <div class="row m-4">
+      <h1 class=" text-center mt-5 ">My Achievements</h1>
+        <div class="col-12 pt-5 d-flex">
+          <div class=" col text-center">
+            <h3 class="">My Testimonials</h3>
+              <div class="card card-box"  style="width: 30rem;">
+                <div class="row ">
+                  <div class="col-md-4">
+                    <img src="/static/imge/cisco.jpeg" width="115%" style="border-radius: 10px;"/>
+                  </div>
+                  <div class="col ">
+                    <a class="link-offset-2 link-underline link-underline-opacity-0 text-dark"  href="static/pdf/sara.pdf"> 
+                    <div class="card-body">
+                      <p class="card-text "><small class="">I got the certificate of attendance from Cisc omentitled(Introduction cyber security) dated 1 jun 2023</small></p>
+                    </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="card mt-3 mb-4 card-box"  style="width: 30rem;">
+                <div class="row ">
+                  <div class="col-md-4 ">
+                    <img src="/static/imge/sara.jpeg" width="115%" height="130px" style="border-radius: 10px;"/>
+                  </div>
+                  <div class="col ">
+                    <a class="link-offset-2 link-underline link-underline-opacity-0 text-dark"  href="static/pdf/T.pdf"> 
+                    <div class="card-body">
+                      <p class="card-text "><small class="">I obtained a certificate of attendance at the SATR platform entitled (Introduction to Web Development) on 2/24/2023</small></p>
+                    </div>
+                    </a>
+                  </div>
+                </div>
+              </div>      
+          </div> 
+          <div class="col-6">
+            <div class=" col  text-center">
+              <h3 class="">My Projects</h3>
+              <div class="card card-box "  style="width: 30rem;">
+                <div class="row ">
+                  <div class="col ">
+                    <a class="link-offset-2 link-underline link-underline-opacity-0 text-dark"  href="static/pdf/TREHAL (2).PPTX"> 
+                    <div class="card-body">
+                      <p class="card-text "><small class="">Graduation Project: It was a website for bus companies for university students</small></p>
+                    </div>
+                    </a>
+                  </div>
+                  <div class="col-md-4">
+                    <img src="/static/imge/terhal.png" height="110px" style="border-radius: 10px; margin-left: 25px;"/>
+                  </div>
+                </div>
+              </div>
+              <div class="card mt-3 mb-4 card-box"  style="width: 30rem;">
+                <div class="row ">
+                  <div class="col ">
+                    <div class="card-body">
+                      <p class="card-text "><small class="">Tourism project: Tourist cities in Saudi Arabia and tourist places that we can visit</small></p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <!--<img src="/static/imge/sara.jpeg" width="115%" style="border-radius: 10px; margin-left: -20px;"/>-->
+                  </div>
+                </div>
+              </div>     
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 class="text-center p-5 mt-5">My Hoppies</h1>
+<div class="container"style="margin-top: 10px; margin-left: 100px;">
+  <div class="card mb-3 box" style="max-width: 1000px ; height: 350px;margin-left:0px; background-color:rgba(193, 123, 193, 0.136);;">
+      <div class="row g-0">
+      <div class="col-md-4">
+          <img src="/static/imge/draw.jpeg" class=" rounded-start rounded-4" alt="..." style="height: 350px;;width:auto ;">
+      </div>
+      <div class="col-8 ps-5">
+          <div class="card-body  pt-5 align-items-center">
+          <h4 class="card-title  pt-5">One of my hobbies is drawing:</h4>
+          <p class="card-text "> I have love drawing since childhood, but I stopped drawing for a while, drawing makes me happy and I love colors and my sense of color. When I draw a drawing, I feel a beautiful feeling and I show all my family my drawing I enjoy my time when I draw</p>
+      
+          </div>
+      </div>
+      </div>
+  </div>
+
+
+  <div class="card mb-3 box" style="max-width: 950px ;height: 350px;margin-left:0px; background-color:rgba(193, 123, 193, 0.136);">
+      <div class="row g-0">
+          <div class="col-8 ps-5">
+              <div class="card-body   pt-5 align-items-center">
+              <h4 class="card-title pt-5">Photography</h4>
+              <p class="card-text ">One of the things I also love is photography. I take pictures for my diary and also share them on TikTok. I love that photos remain memories. I feel beautiful when I look at the photographs I took.</p>
+          
+              </div>
+          </div>
+      <div class="col-1">
+          <img src="/static/imge/photo.jpeg" class=" rounded-end rounded-4" alt="..." style="height: 350px;;width:auto ; margin-left: 110px; ">
+      </div>
+      </div>
+  </div>
+</div>
+
+
+{% endblock %}
