@@ -20,9 +20,12 @@
           <i class='bx {{ service.icon }}'></i>
           <h3>{{ service.title }}</h3>
           <p>{{ service.description }}</p>
-          <a href="{% url 'service:service_detail' service.id %}" class="btn">Read More</a>
+          <a href="{% url 'service:service_detail' service.id %}" class="btn">Read More</a><br><br>
           {% if user.is_staff or user.is_superuser %}
           <a href="{% url 'service:service_delete' service.id %}" class="btn">Delete</a>
+          {% endif %}
+          {% if user.is_staff or user.is_superuser %}
+        <br><br>  <a  href="{%url 'service:service_update' service.id%}" class="btn">Update</a>
           {% endif %}
 
       </div>

@@ -3,6 +3,7 @@
 {% block title %}{% if service %}Update Service{% else %}Add Service{% endif %} {% endblock %}
 {% load static %}
 {% block content %}
+{% if user.is_staff or user.is_superuser %}
 <section class="contact" id="contact">
   <h2 class="heading text-center">{% if service %}Update Service{% else %}Add Service{% endif %}</h2>
 
@@ -19,7 +20,7 @@
         <option value="bxl-django">Django</option>
         <option value="bxl-css3">CSS3</option>
         <option value="bxl-python">PYTHON</option>
-        <option value="bxl-graphql">ANLAYSIS</option>
+        <option value="bxl-500px">ANLAYSIS</option>
         <option value="bx-data">Data</option>
 
 
@@ -29,6 +30,6 @@
       
   </form>
 </section>
-   
+{% endif %}
 {% endblock %}
     
