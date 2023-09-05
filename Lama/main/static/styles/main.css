@@ -1,0 +1,328 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.main{
+    width: 100%;
+    height: 100vh;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.back-video{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+@media (min-aspect-ratio: 16/9){
+    .back-video{
+        width: 100%;
+        height: auto;
+    }
+}
+@media (max-aspect-ratio: 16/9){
+    .back-video{
+        width: auto;
+        height: 100%;
+    }
+}
+.logo{
+    width: 100px;
+}
+navbar{
+    background-attachment: white ;
+}
+.nav-link{
+    color: black;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+}
+.nav-link:hover{
+    color: white;
+    background-color:rgb(233,20,109);
+}
+.navbar-brand{
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/*main section*/
+
+/*.main{
+    background-image:url(/static/images/personal.png) ;
+    background-size: cover;
+    width: 100%;
+    height: 95vh;
+}*/
+.main h3{
+    font-size: 4.4rem;
+    font-weight: 700;
+}
+.main h6{
+    font-size: 1.01rem;
+    text-transform: uppercase;
+    line-height:1 ;
+    border-bottom: 3px solid rgb(233,20,109) ;
+    width: 40%;
+}
+.main .bt1{
+    height: 55px;
+    width: 138px;
+    background-color: transparent;
+    color: rgb(233,20,109);
+    outline: none;
+    border: 1px solid rgb(233,20,109);
+    font-weight: bold;
+    border-radius: 5px;
+}
+.main .bt1:hover{
+    background-color: rgb(233,20,109);
+    transition: 0.5s;
+    color: white;
+}
+.about img{
+    height: 60%;
+    box-shadow: 10px 1px 41px -3px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 1px 41px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 1px 41px -3px rgba(0,0,0,0.75);
+}
+.about h1{
+    font-size: 3rem;
+    font-weight: 900;
+}
+.progress{
+    background-color: rgb(223,219,219);
+    justify-content: flex-start;
+    border-radius: 50px ;
+    align-items: center;
+    position: relative;
+    display: flex;
+    height: 25px;
+    width: 100%;
+    box-shadow: 10px 1px 41px -3px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 1px 41px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 1px 41px -3px rgba(0,0,0,0.75);
+}
+
+.pro-value1{
+    animation: load1 3s normal forwards;
+    border-radius: 50px;
+    background-color: rgb(233,20,109);
+    height: 40px;
+    width: 0;
+}
+.progress p{
+    color: white;
+    padding: 12px;
+}
+@keyframes load1{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 98%;
+    }
+}
+.pro-value2{
+    animation: load2 3s normal forwards;
+    border-radius: 50px;
+    background-color: rgb(91, 91, 91);
+    height: 40px;
+    width: 0;
+}
+.pro-value3{
+    animation: load3 3s normal forwards;
+    border-radius: 50px;
+    background-color: rgb(233,20,109);
+    height: 40px;
+    width: 0;
+}
+
+@keyframes load2{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 85%;
+    }
+}
+
+@keyframes load3{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 99%;
+    }
+}
+.pro-value4{
+    animation: load4 3s normal forwards;
+    border-radius: 50px;
+    background-color: rgb(91, 91, 91);
+    height: 40px;
+    width: 0;
+}
+@keyframes load4{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 92%;
+    }
+}
+.pro-value5{
+    animation: load5 3s normal forwards;
+    border-radius: 50px;
+    background-color: rgb(91, 91, 91);
+    height: 40px;
+    width: 0;
+}
+.pro-value6{
+    animation: load6 3s normal forwards;
+    border-radius: 50px;
+    background-color: rgb(233,20,109);
+    height: 40px;
+    width: 0;
+}
+.pro-value7{
+    animation: load7 3s normal forwards;
+    border-radius: 50px;
+    background-color: rgb(91, 91, 91);
+    height: 40px;
+    width: 0;
+}
+.pro-value8{
+    animation: load8 3s normal forwards;
+    border-radius: 50px;
+    background-color: rgb(233,20,109);
+    height: 40px;
+    width: 0;
+}
+@keyframes load5{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 100%;
+    }
+}
+@keyframes load6{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 99%;
+    }
+}
+@keyframes load7{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 90%;
+    }
+}
+@keyframes load8{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 89%;
+    }
+}
+.btn1{
+    height: 40px;
+    width: 145px;
+    border-radius: 4px;
+    background-color: transparent;
+    color: rgb(233,20,109);
+    outline: none;
+    border: 1px solid rgb(233,20,109);
+    font-weight: bold;
+}
+.btn1:hover{
+    background-color: rgb(233,20,109);
+    transition: 0.5s;
+    color: white;
+}
+.card{
+    border: none;
+    outline: none;
+    box-shadow: -3px 1px 44px -3px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -3px 1px 44px -3px rgba(0,0,0,0.75);
+    -moz-box-shadow: -3px 1px 44px -3px rgba(0,0,0,0.75);
+}
+.card h6{
+    color: gray;
+}
+.circle{
+    height: 70px;
+    width: 70px;
+    background-color: rgb(228, 220, 220);
+    color: black;
+    padding: 12px;
+    font-size: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+.card:hover  .circle{
+    background-color: rgb(233,20,109);
+    color: white;
+    transition: 0.5s;
+}
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.box{
+    position: relative;
+    width: 400px;
+    height: 400px;
+    background: repeating-conic-gradient(from var(--a),#ff2770 0%,#ff2770 5% , transparent 5% ,transparent 40%,#ff2770 50%) ;
+    animation: animate 4s linear infinite;
+    border-radius: 20px;
+}
+@property --a{
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+@keyframes animate{
+    0%{
+        --a: 0deg;
+    }
+    100%{
+        --a: 360deg;
+    }
+}
+.box::after{
+    content: '';
+    position: absolute;
+    inset: 8px;
+    background-image: url("https://t3.ftcdn.net/jpg/05/31/71/02/240_F_531710260_ByieqNe7Ut6QBHgIR7xgdsxH7gICrHr1.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.service-img {
+    height: 150px;
+    width: 150px;}
+
+.service-img-update{
+    height: 150px;
+    width: 150px;
+}
+.tcolor{
+    color: #ff2770;
+}

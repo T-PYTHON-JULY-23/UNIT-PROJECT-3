@@ -1,0 +1,44 @@
+{%extends 'main/base.html'%}
+{%block title%}update services {%endblock%}
+
+{%block content%}
+<div class="container-fluid pt-5" id=" add services ">
+    <div class="container">
+        <div class="position-relative d-flex align-items-center justify-content-center">
+            <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Services</h1>
+            <h1 class="position-absolute  text-uppercase" style="color: rgb(233,20,109);">update services </h1>
+        </div>
+    </div>
+</div>
+<div class="container card mt-2">
+    <div class="row">
+
+        <div class="col">
+            <form  action="{% url 'services:service_update_view' service.id %}" method="post" enctype="multipart/form-data" class="d-flex flex-column gap-2">
+                {% csrf_token %} 
+                <label style="color: #ff2770;">Title: </label>
+                <input type="text" name="title" value="{{ service.title }}" class="form-control"/>
+                
+                <label style="color: #ff2770;">Description: </label>
+                <textarea name="description" class="form-control">{{ service.description }}</textarea> 
+            
+                <div class="d-flex gap-2 align-items-center">
+                    <h5 style="color: #ff2770;">Current Image:</h5>
+                    <img src="{{ service.image.url }}"  class="rounded-4 object-fit-cover service-img-update" />
+                </div>
+
+                <label style="color: #ff2770;">Choose Image: </label>
+                <input type="file" name="image" class="form-control"/>
+
+                <label style="color: #ff2770;">Publish Date:</label>
+                <input type="date" name="publish_date" value="{{ service.created_at.isoformat }}" class="form-control"/>
+
+                <input type="submit" value="update service" class="btn btn1"/>
+
+            </form>
+
+        </div>
+
+    </div>
+</div>
+{%endblock%}

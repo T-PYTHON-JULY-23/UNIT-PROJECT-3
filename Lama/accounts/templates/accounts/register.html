@@ -1,0 +1,35 @@
+{% extends 'main/base.html' %}
+
+{% block title %} New User Registeration {% endblock%}
+
+{% block content %}
+<div class="container-fluid py-5" id="services ">
+    <div class="container">
+        <div class="position-relative d-flex align-items-center justify-content-center">
+            <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">register</h1>
+            <h1 class="position-absolute  text-uppercase" style="color: rgb(233,20,109);">register </h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+            <div class="col">
+
+                <form action="{% url 'accounts:register_user_view' %}" method="post" >
+                    {% csrf_token %}
+
+                    <input type="text" name="first_name" class="form-control mt-2" placeholder="First Name" />
+                    <input type="text" name="last_name" class="form-control mt-2" placeholder="Last Name" />
+                    <input type="text" name="username" class="form-control mt-2" placeholder="User Name" />
+                    <input type="email" name="email" class="form-control mt-2" placeholder="Email Address" />
+                    <input type="password" name="password" class="form-control mt-2" placeholder="Password" />
+
+                    <input type="submit" value="Register" class="btn btn1 mt-4" />
+
+                </form>
+
+            </div>
+    </div>
+</div>
+    
+{% endblock %}

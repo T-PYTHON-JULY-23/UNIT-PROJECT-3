@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/c26cd2166c.js"></script>
+    <link rel="stylesheet" href="{%static 'styles/main.css'%}"/>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top text-uppercase bg-opacity-25">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#"><img src="/static/images/llogo-removebg-preview.png" class="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link  px-lg-4 rounded"href="{% url 'main:about_me' %}">About me</a>
+            <a class="nav-link px-lg-4 rounded" href="#skill">Skills</a>
+            <a class="nav-link px-lg-4 rounded" href="#contact">Contact</a>
+            <a class="nav-link px-lg-4 rounded" href="{% url 'services:all_services_view' %}">Services</a>
+            {% if request.user.is_staff %}
+                      <a class="nav-link px-lg-4 rounded" href="{% url 'services:add_service_view' %}">Add Service </a>
+                      {% endif %}
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle px-lg-4 rounded" href="#" data-bs-toggle="dropdown" aria-expanded="false">{% if request.user.is_authenticated %}{{ request.user.first_name }} {% else %} Register {% endif %} </a>
+                      <ul class="dropdown-menu">
+                        {% if request.user.is_authenticated %}
+                        <li><a class="dropdown-item px-lg-4 rounded" href="{% url 'services:user_request_view' %}">My Service</a></li>
+                        {% if request.user.is_staff %}
+                            <li><a class="dropdown-item px-lg-4 rounded" href="{% url 'services:update_request_view' %}">users request</a></li>
+                          {%endif%}
+                        <li><a class="dropdown-item px-lg-4 rounded" href="{% url 'accounts:logout_user_view' %}">Log Out</a></li>
+                          
+                        {% else %} 
+                          <li><a class="dropdown-item px-lg-4 rounded" href="{% url 'accounts:register_user_view' %}">Register</a></li>
+                          <li><a class="dropdown-item px-lg-4 rounded" href="{% url 'accounts:login_user_view' %}">Log In</a></li>               
+                        {% endif %} 
+                      </ul>
+                    </li>
+          </div>
+        </div>
+      </div>
+    </nav>
+    {%block content%}{%endblock%}
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+</body>
+</html>
