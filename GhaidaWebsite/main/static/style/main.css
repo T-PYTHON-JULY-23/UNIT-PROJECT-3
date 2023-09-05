@@ -19,8 +19,8 @@ body{
 } 
 
 .nav-itemp:hover{
-    animation: pulse; 
-    animation-duration: 2s;
+    animation: tada; 
+    animation-duration: 5s;
 }
  /*
 img:hover{

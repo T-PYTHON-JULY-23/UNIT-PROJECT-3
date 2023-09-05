@@ -27,7 +27,7 @@
       <ul class="nav col-6 col-md-auto mb-2 justify-content-center mb-md-0">
         <li class="nav-item "><a href="/" class="nav-link px-4 link-secondary">Home</a></li>
         <li class="nav-item" ><a href="{% url 'main:projects_page' %}" class="nav-link px-4 link-secondary">projct</a></li>
-        <li class="nav-item"><a href="{% url 'main:about_page' %}" class="nav-link px-4 link-secondary">About my</a></li>
+        <li class="nav-item"><a href="{% url 'main:about_page' %}" class="nav-link px-4 link-secondary">hobbies</a></li>
         <li class="nav-item"><a href="{% url 'service:all_service' %}" class="nav-link px-4 link-secondary">Servics</a></li>
         {% if request.user.is_authenticated and not request.user.is_staff %}
         <li><a href="{% url 'service:user_serv_request' %}" class="nav-link px-4 link-secondary">My Requset</a></li>
