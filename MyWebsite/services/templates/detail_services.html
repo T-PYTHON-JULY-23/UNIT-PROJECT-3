@@ -35,10 +35,12 @@
         </div>
     </div>
     {% endif %}
+    {% if request.user.is_authenticated %}
     <form action="{% url 'services:details_services_view' service.id %}" method="post">
         {% csrf_token %}
         <input type="submit" value="Send Request" class="btn btn-primary mb-5 mt-5">
     </form>
+    {% endif%}
 
 </div>
 {% endblock %}
