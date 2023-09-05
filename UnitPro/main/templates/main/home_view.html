@@ -4,7 +4,7 @@
 
 
 {% block content %}
-<div class="container-fluid border border-light-subtle ms-4 me-4 shadow rounded d-flex justify-content-center mt-5 mb-2 text-center"style ="background-image: url(/static/img/we.jpg);" >
+<div class="container border border-light-subtle  shadow rounded d-flex justify-content-center mt-5 mb-2 text-center"style ="background-image: url(/static/img/we.jpg);" >
     <div >
         <h3 class="animate__animated  animate__bounceInDown mt-2">WELCOME TO OUR SALON</h3>
         <div class="p-3"><h5>This website was created as a means of escaping reality and living a vibrant experience outside of a computer screen.</h5>
@@ -19,7 +19,7 @@
 <div class="p-3 mt-5"><h5>Our Services</h5></div>
 <div class="row ms-4 ">
     {% for service in services %}
-        <div class="col-4 mt-4 animate__animated  animate__backInDown">
+        <div class="col-2 mt-4 animate__animated  animate__backInDown">
             <div class="d-flex flex-column gap-3 border border-1 shadow rounded-4 p-4 mt-1  h-100 justify-content-between">
                 <img src="{{ service.image.url }}" class="rounded-4 object-fit-cover border border-1 " />
                 <h3 >{{ service.title }}</h3>
