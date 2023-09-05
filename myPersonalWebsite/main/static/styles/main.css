@@ -1,0 +1,84 @@
+*{
+    font-family: 'Rubik Iso', cursive !important;
+}
+.logo {
+    width: 60px;
+    height: auto;
+}
+
+.nav {
+    background-color: rgba(173, 196, 206, 0) !important;
+
+}
+
+body {
+    background-color: rgb(250, 240, 230);
+}
+
+.text-color {
+    color: rgb(92, 84, 112) !important
+}
+
+.menu {
+    background-color: rgb(92, 84, 112);
+}
+
+.menu-text {
+    color: rgb(250, 240, 230) !important
+}
+
+.child {
+    position: absolute;
+    left: 0250px;
+    top: 0150px;
+}
+
+.parent {
+    width: 100%;
+}
+
+.home-img {
+    width: 450px;
+    height: auto;
+}
+
+.test {
+    /* width: 450;
+    height: auto; */
+    background-color: rgba(53, 47, 68, 0.91);
+    /* border-radius:50px; */
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.forms {
+    /* width: 450;
+    height: auto; */
+    background-color: rgba(53, 47, 68, 0.91) !important;
+    /* border-radius:50px; */
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.child-1 {
+    position: absolute;
+    left: 600px;
+    top: 0350px;
+    color: rgb(250, 240, 230);
+}
+
+.child-2 {
+    position: absolute;
+    left: 620px;
+    top: 0400px;
+    color: rgb(250, 240, 230);
+}
+
+.child-3 {
+    position: absolute;
+    left: 640px;
+    top: 0450px;
+    color: rgb(250, 240, 230);
+}
+/* .for-form{
+    background-color: rgb(26, 105, 175);
+} */

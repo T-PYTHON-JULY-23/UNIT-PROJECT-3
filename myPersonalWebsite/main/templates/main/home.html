@@ -1,0 +1,29 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+<div class="row m-5">
+<div class="col-6 d-flex justify-content-end align-items-center">
+<img class="home-img object-fit-cover rounded-3" src="static/images/homepage1.jpg"/>
+</div>
+<div class="col-6 d-flex justify-content-start align-items-center">
+<h3 style="color:rgb(92, 84, 112) ;">Creating innovative Websites and apps <br> Transforming Concepts into Functional code <br> Join me on my coding journey!</h3>
+</div>
+</div>
+<hr/>
+<h5 style="color:rgb(92, 84, 112) ;">Recent Services </h5>
+<div class="row gap-4 m-1">
+    {% for service in services %}
+    <div class="card col-4 mt-4" style="width: 18rem; background-color: rgb(92, 84, 112); color:rgb(250, 240, 230) ;">
+        <img src="{{service.image.url}}" class="card-img-top pt-3" alt="...">
+        <div class="card-body">
+            <h5 class="card-title pb-2">{{ service.title }}</h5>
+            <p class="card-text"> {{ service.publish_date }}</p>
+            <a href="{% url 'main:service_detail_view' service.id %}" class="btn" style="background-color: rgb(250, 240, 230); color:rgb(92, 84, 112) ;">Read more</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

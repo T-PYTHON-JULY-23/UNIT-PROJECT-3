@@ -1,0 +1,55 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %} Services Request {% endblock %}
+
+{% block content %}
+<div style="color:rgb(92, 84, 112);" class="pt-3 ">
+    {% if "msg" in  request.GET %}
+    <div class="alert alert-dismissible fade show"
+        style="background-color: rgb(92, 84, 112); color:  rgb(250, 240, 230);" role="alert">
+        <strong>{{request.GET.msg}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    <h3>Services Request</h3>
+    <hr />
+</div>
+<div class="row gap-4 m-1">
+    {% for service_request in services_request %}
+    <div class="card col-4 mt-4" style="width: 18rem; background-color: rgb(92, 84, 112); color:rgb(250, 240, 230) ;">
+        <!-- <img src="{{service_request.service.image.url}}" class="card-img-top pt-3" alt="..."> -->
+        <div class="card-body">
+            <h5 class="card-title pb-2">{{ service_request.service.title }} </h5>
+            <hr />
+            <p class="card-text"> Request by: {{ service_request.user }}</p>
+            <form action="{% url 'main:update_request_view' service_request.id %}" method="post">
+                {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Take action: </label>
+                <select class="form-select" style="color: rgb(92, 84, 112) ; background-color: rgb(250, 240, 230);" aria-label="Default select example" name="status">
+                    <option value=" in_progress" {% if service_request.status == "in_progress" %} selected {% endif%}>  in progress </option>
+                    <option value="done"{% if service_request.status == "done" %} selected {% endif%}> done </option>
+                    <option value="canceled"{% if service_request.status == "canceled" %} selected {% endif%}> canceled </option>
+                    <option value="reviews"{% if service_request.status == "reviews" %} selected {% endif%}> reviews </option>
+                </select>
+            </div>
+            <div class="row">
+            <p class="card-text col d-flex justify-content-start"> {{ service_request.status }}</p>
+            {% if service_request.status == "done" %}
+            <p class="card-text col d-flex justify-content-end" style= "color: rgb(72, 185, 72);"> ◉</p>
+            {% elif service_request.status == "canceled" %}
+            <p class="card-text col d-flex justify-content-end" style= "color: rgb(238, 45, 77);"> ◉</p>
+            {% elif service_request.status == "reviews" %}
+            <p class="card-text col d-flex justify-content-end" style= "color: rgb(214, 138, 103);"> ◉</p>
+            {%else%}
+            <p class="card-text col d-flex justify-content-end" style= "color: rgb(222, 224, 157);"> ◉</p>
+            {% endif%}
+        </div>
+            <button type="submit" class="btn" style="background-color: rgb(250, 240, 230); color:rgb(92, 84, 112) ;">change status</button>
+        </form>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

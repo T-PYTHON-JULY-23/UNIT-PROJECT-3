@@ -1,0 +1,59 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %} Requests {% endblock %}
+
+{% block content %}
+<div style="color:rgb(92, 84, 112);" class="pt-3 ">
+    {% if "msg" in  request.GET %}
+    <div class="alert alert-dismissible fade show"
+        style="background-color: rgb(92, 84, 112); color:  rgb(250, 240, 230);" role="alert">
+        <strong>{{request.GET.msg}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    <h3>{{request.user.first_name}} Requests</h3>
+    <hr />
+</div>
+<div class="row gap-4 m-1">
+    {% for servicerequest in request.user.servicerequest_set.all %}
+    <div class="card col-4 mt-4" style="width: 18rem; background-color: rgb(92, 84, 112); color:rgb(250, 240, 230) ;">
+        <div class="card-body">
+            <h5 class="card-title pb-2">{{ servicerequest.service.title }} </h5>
+            <hr />
+            <div class="row">
+            <p class="card-text col d-flex justify-content-start"> {{ servicerequest.status }}</p>
+            {% if servicerequest.status == "done" %}
+            <p class="card-text col d-flex justify-content-end" style= "color: rgb(72, 185, 72);"> ◉</p>
+            {% elif servicerequest.status == "canceled" %}
+            <p class="card-text col d-flex justify-content-end" style= "color: rgb(238, 45, 77);"> ◉</p>
+            {% elif servicerequest.status == "reviews" %}
+            <p class="card-text col d-flex justify-content-end" style= "color: rgb(214, 138, 103);"> ◉</p>
+            {%else%}
+            <p class="card-text col d-flex justify-content-end" style= "color: rgb(222, 224, 157);"> ◉</p>
+            {% endif%}
+        </div>
+        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#deleteModal"
+        style="background-color: rgb(250, 240, 230); color:rgb(92, 84, 112) ;">Delete</button>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style=" color: rgb(53, 47, 68);">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Request</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style=" color: rgb(53, 47, 68);">
+                Are you sure you want to delete <span class="fw-bold">{{servicerequest.service.title}}</span> ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="{% url 'main:delete_request_view' servicerequest.id %}" class="btn btn-danger">Delete!</a>
+            </div>
+        </div>
+    </div>
+</div> 
+    {% endfor %}
+{% endblock %}
