@@ -1,0 +1,11 @@
+{% for service in services %}
+    <div>
+      <h3>{{ service.title }}</h3>
+      <p>{{ service.description }}</p>
+      <img src="{{ service.image.url }}" alt="{{ service.title }}">
+      <form method="post" action="{% url 'service_detail' service.id %}">
+        {% csrf_token %}
+        <button type="submit">Request Service</button>
+      </form>
+    </div>
+  {% endfor %}

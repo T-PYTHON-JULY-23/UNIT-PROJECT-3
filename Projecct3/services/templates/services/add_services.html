@@ -1,0 +1,26 @@
+<div class="row">
+
+    <div class="col">
+        <h2>Adding post</h2>
+
+        <form  action="{% url 'services:add_view' %}" method="post" enctype="multipart/form-data" class="d-flex flex-column gap-2">
+            {% csrf_token %} 
+            <label>Title: </label>
+            <input type="text" name="title" />
+
+            <label>Description: </label>
+            <textarea name="description"></textarea>
+            
+            
+
+
+
+            <input type="submit" value="Add post" class="btn btn-primary"/>
+
+        </form>
+
+
+        
+    </div>
+
+</div>
