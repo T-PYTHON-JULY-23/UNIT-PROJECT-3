@@ -1,0 +1,65 @@
+
+{% extends 'main/base.html' %}
+
+{% block title %} detail   {% endblock %}
+
+{% block content %}
+
+<div class="b" id="b">
+
+<div class="b-container m-5 pt-5">
+    <div class="row   p-3">
+       
+        
+        <div class="col-4   backpic2 p-5 ">
+            <img src="{{service.image.url}}" class="z-2 border position-absolute left" width="350vh">
+        </div>
+
+        <div class="col-8  ps-0 ms-0  dec2">
+            <div class="     backpic2 p-3 ps-4 mt-0  me-0 text-center">
+                <p class="fs-2 title #b "> {{service.title}} </p>
+                <div class="mb-1  nav-text text-center"> create at :{{service.created_at}}</div>
+                <p class="phrase2 ">
+                    {{service.description}}
+                </p>
+                {% if request.user.is_staff %}
+                
+                 <a class="colored-text btn btn-lg view-button " href="{% url 'service:service_update_view' service.id %}">Update </a>
+                 <!-- Button trigger modal -->
+                 <button type="button" class="colored-text btn btn-lg view-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                     Delete
+                 </button>
+                 
+                 <!-- Modal -->
+                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                     <div class="modal-dialog">
+                     <div class="modal-content">
+                         <div class="modal-header">
+                            
+                         <h5 class="modal-title nav-text text-center" id="staticBackdropLabel">Worning</h5>
+                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                         </div>
+                         
+                         <div class="black" id="black">
+                         <div class="modal-body ">
+                         are yoy sure delete this service?
+                         </div>
+                         <div class="modal-footer">
+                         <button type="button" class="colored-text btn btn-lg view-button" data-bs-dismiss="modal">Cnacele</button>
+                         <a class="colored-text btn btn-lg view-button" href="{% url 'service:service_delete_view' service.id %}">Delete</a>
+                     </div>
+                     </div>
+                     </div>
+                 </div>
+                
+              {%else%}
+                <a class="colored-text btn btn-lg view-button " href=" {% if request.user.is_authenticated %}{% url 'service:add_request' service.id %}{%else%}{% url 'users:login_view' %}{% endif %}">Order »</a>
+                {%endif%}
+            </div>
+
+
+        </div>
+       
+    </div>
+</div>
+{%endblock%}

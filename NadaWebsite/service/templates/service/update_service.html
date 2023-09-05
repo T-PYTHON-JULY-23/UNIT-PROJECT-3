@@ -1,0 +1,27 @@
+
+{% extends 'main/base.html' %}
+{% block title %} update Service{% endblock %}
+{% block content %}
+    <div class="row">
+      
+        <div class="col colored-text">
+            <h2>update Service</h2>
+            <form  action="{% url 'service:service_update_view' service.id %}" method="post" enctype="multipart/form-data" class="d-flex flex-column gap-2 colored-text">
+                {% csrf_token %} 
+                <label>Title: </label>
+                <input type="text" name="title" value="{{service.title}}" class="form-control" />
+                
+                <label>Description: </label>
+                <textarea name="description" class="form-control">
+                    {{service.description}}
+                </textarea> 
+
+                <label>Choose Image: </label>
+                <img src="{{service.image.url}} "width=100px>
+                <input type="file" name="image" class="form-control"/>
+
+                <input type="submit" value="update Service" class="btn btn-lg view-button nav-text"/>
+            </form>
+        </div>
+    </div>
+{% endblock %}

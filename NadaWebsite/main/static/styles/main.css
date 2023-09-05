@@ -1,0 +1,77 @@
+body {
+  background-image: url('/static/images/hero-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: flex;
+}
+
+.nav-text {
+  color: rgb(32, 105, 105);
+}
+
+.nav-link.nav-text {
+  color: white !important;
+}
+
+.text-container {
+  text-align: left;
+  color: rgb(32, 105, 105);
+  font-size: 50px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.View-text {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.view-button {
+  padding: 10px 20px;
+  background-color:  rgb(32, 105, 105);
+  color: rgb(241, 248, 248);
+  text-decoration: none;
+  border-radius: 20px;
+}
+
+.colored-text {
+  color: aliceblue;
+}
+.btsign:hover,.view-button:hover{
+  background-color: rgb(99, 100, 100) !important;
+
+}
+
+#b {
+  font-size: 30px;
+  color: aliceblue;
+}
+
+#black
+{
+  color: black;
+}
+
+
+.about-me {
+  display: flex;
+  align-items: left;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.about-me-text {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.about-me-image {
+  flex: 1;
+  text-align: right;
+}
+
+.logo {
+  width: 450px;
+  height: 450px;
+}
+
+
+
