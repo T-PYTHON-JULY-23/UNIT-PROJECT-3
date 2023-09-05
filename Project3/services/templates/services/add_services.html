@@ -1,0 +1,46 @@
+{%extends 'main/base.html'%}
+{% block title%} add Services page {%endblock%}
+
+{% block style %}
+<style>
+
+ body {
+    background-color:rgb(0, 0, 0);
+ }
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+ <h2> add Services page</h2>
+ div class="container">
+    <div class="con2">
+        <div class="form1">
+            <form  action="{% url 'services:update_services' service.id %}" method="post" enctype="multipart/form-data" class="d-flex flex-column gap-2">
+                {% csrf_token %}
+                   <div class="inbox">
+                    <input type="text" name="title" value="{{service.title}}"/>
+                    <label>Title:</label>
+                   </div>
+                   <div class="in-area">
+                    <label style=" width: 100%; height: 100%;">Descripton:</label>
+                    <textarea name="description" style="background-color: aliceblue;">{{service.description}}</textarea>
+                   </div>
+                   <div class="image1">
+                    <label style="width: 100% ; height: 100%;">Chooose image</label>
+                    <img src = "{{service.image.url}}" class="rounded-4 object-fit-cover book-poster-update w-50 "/>
+                    <input type = "file" name = "image" class="form-control"style="background:transparent"/>
+                   </div>
+                          <div class="col-12 p-4">
+                            <button class="btn-primary" value="Add A service" type="submit">submit</button>
+                          </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

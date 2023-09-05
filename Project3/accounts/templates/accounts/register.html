@@ -1,0 +1,52 @@
+{%extends 'main/base.html'%}
+{% block title%} Register user{%endblock%}
+
+{% block style %}
+<style>
+
+ body {
+    background-color:rgba(99, 7, 7, 0.373);
+ }
+
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="container">
+
+    <div class="row f-container">
+        <div class="col d-flex justify-content-center">
+            
+            <!--<div class="row">
+                <div class="col">-->
+                <div class="form-container">
+                    
+                    <form action="{% url 'accounts:register_user_view' %}" method="post" >
+                        {% csrf_token %}
+                        <div class="imgcontainer">
+                            <img src="/static/images/login.png" alt="Avatar" class="avatar">
+                        </div>
+                    <div class="in1 d-flex flex-column align-items-center justify-content-center">
+                        <input type="text" name="first_name" class="form-control mt-4" placeholder="First Name" />
+                        <input type="text" name="last_name" class="form-control mt-4" placeholder="Last Name" />
+                        <input type="text" name="username" class="form-control mt-4" placeholder="User Name" />
+                        <input type="email" name="email" class="form-control mt-4" placeholder="Email Address" />
+                        <input type="password" name="password" class="form-control mt-4" placeholder="Password" />
+                        <div class="text-center">
+                        <input type="submit" value="Register" class="btn btn-outline-danger mt-4 btn-lg" />
+                        </div>
+                    </div>
+                </div>
+                    </form>
+
+            </div>
+
+        </div>
+    
+    </div>
+
+
+{% endblock %}

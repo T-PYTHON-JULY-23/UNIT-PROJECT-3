@@ -1,0 +1,42 @@
+{%extends 'main/base.html'%}
+{% block title%} manager page {%endblock%}
+
+{% block style %}
+<style>
+
+ body {
+    background-color:rgba(0, 0, 0, 0.196);
+ }
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+ <h2>manager page</h2>
+
+{% for mana in services %}
+
+ <div class = "d-flex gap-2 p-4 m-2">
+    <img src = "{{m.ServerApp.image.url}}" class = "small-poster object-fit-cover rounded-4" width="50%"/>
+    <div>
+        <h3><a href="#">{{mana.ServerApp.title}}</a></h3>
+        <label> Status:</label>
+    <form action="{% url 'services:manager_only' request.id %}" method="post">
+        {% csrf_token %}
+        <select name = "static" class = "form-select">
+            {% for value, title in choices %}
+                <option value="{{value}}" {% if mana.status == value %} selected {% endif %}>{{title}}></option>
+            {% endfor %}
+        </select>
+        <input type="submit" name="submit"/>
+
+    </form>
+         <h5>{{mana.user.username}}</h5>
+         <p>{{mana.description_user}}</p>
+    </div>
+ </div>
+{% endfor %}
+
+{% endblock %}
