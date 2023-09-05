@@ -1,0 +1,37 @@
+{%extends 'main/base.html'%}
+{% block title%} Services page {%endblock%}
+
+{% block style %}
+
+<style>
+
+ body {
+    background-color:rgba(67, 24, 24, 0.427);
+ }
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+ <h6>Services pageee</h6>
+ 
+
+ <div class="row">
+ {% for service in services %}
+  <div class ="col-4 mt-4 ">
+     <div class ="d-flex flex-column gap-3 border border-1 shadow rounded-4 p-4 mt-1 h-100 justify-content-between"> 
+         <img src="{{service.image.url}}" class="rounded-4 object-fit-cover border border-1 book-poster"/>   
+           
+         <h3>{{ service.title }}</h3>
+         <h6>{{ service.description }}</h6>
+         <a href="{% url 'services:detaill_services' service.id %}" class="btn border shadow ">More info</a>
+      </div>
+   </div>
+</div>
+ {% endfor %}
+ 
+
+
+{% endblock %}

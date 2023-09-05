@@ -1,0 +1,32 @@
+{%extends 'main/base.html'%}
+{% block title%} my requests page {%endblock%}
+
+{% block style %}
+<style>
+
+ body {
+    background-color:rgb(0, 0, 0);
+ }
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+ <h2>{{request.user.first_name}}my requests page{{request.ServerApp.title}}</h2>
+{% for request in all %}
+     <div class = "d-flex gap-2 p-4 m-2">
+        <img src = "{{request.ServerApp.image.url}}" class="small-poster object-fit-cover rounded-4" width="50%"/>
+        <div>
+            <h4><a href="#">{{request.ServerApp.title}}</a></h4>
+            <h3>{{request.ServerApp.description}}</h3>
+            <h3>{{request.static}}</h3>
+            <h3>{{request.description_user}}</h3>
+        </div>
+      </div>
+{% endfor %}
+
+
+
+{% endblock %}
