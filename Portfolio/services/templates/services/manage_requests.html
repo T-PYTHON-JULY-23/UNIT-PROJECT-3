@@ -25,7 +25,7 @@
                 {% csrf_token %}
                     <select name="status" class="form-select">
                         {% for value, title in category_status %}
-                            <option value="{{value}}">{{title}}</option>
+                            <option value="{{value}}" {% if request.status == value %} selected {%endif%}>{{title}}</option>
                         {% endfor %}
                     </select>
                

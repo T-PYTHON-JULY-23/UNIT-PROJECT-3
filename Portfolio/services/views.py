@@ -72,7 +72,7 @@ def display_view(request: HttpRequest):
 
 
 def my_requests_view(request: HttpRequest):
- service_request = ServiceRequest.objects.all()
+ service_request = ServiceRequest.objects.filter(user=request.user)
 
  return render(request,"services/my_requests.html",{"requests" : service_request})
 
@@ -94,7 +94,7 @@ def status_update_view(request: HttpRequest,request_id):
  update_status = ServiceRequest.objects.get(id=request_id)
 
  if request.method == "POST":
-        ServiceRequest.status = request.POST["status"]
+        update_status.status = request.POST["status"]
         update_status.save()
 
  return redirect("services:display_view")
