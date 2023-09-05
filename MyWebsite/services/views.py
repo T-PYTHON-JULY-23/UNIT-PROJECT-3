@@ -61,13 +61,13 @@ def del_services_view(request:HttpRequest, service_id):
 # def request_services_view(request:HttpRequest, service_id):
 
 def send_request_view(request:HttpRequest):
-    if request.user.is_authenticated:
+    if not request.user.is_authenticated:
         return redirect("main:base_view")
     return render(request, "send_request.html")
 
 
 def request_user_view(request:HttpRequest):
-    if request.user.is_authenticated:
+    if not request.user.is_authenticated:
         return redirect("main:base_view")
 
     new_request = ServiceRequest.objects.filter(user=request.user)
