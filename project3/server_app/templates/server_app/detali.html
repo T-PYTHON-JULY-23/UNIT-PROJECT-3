@@ -1,0 +1,91 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Details {{ book.title }} {% endblock %}
+{%block style%}
+<style>
+.anymation{
+    animation:animate__rotateOutDownRight .3s ease forwards;
+    animation-duration: 2s ;
+    opacity:0;
+  }
+  @keyframes animate__rotateOutDownRight{
+
+    100%{
+      opacity:1;
+
+    }
+
+  }
+  .card{
+   
+  background: transparent;
+  border:  2px solid rgba(255, 255, 255, .5);
+  border-radius: 20px;
+  backdrop-filter: blur(20px) ;
+  box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+</style>
+{%endblock%}
+
+{%block update%}
+    {% if request.user.is_staff %}    
+    <div class="row  justify-content-end ">   
+        <a href="{% url 'server_app:server_update_view' server.id %}" class="btn btn-warning mt-5 justify-content-end "style="width: 150px ; ">Update</a>
+        <button type="button" class="btn btn-danger mt-5 ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal"style="width: 150px; ">Delete</button>
+    </div>
+    {% endif %}  
+{% endblock %}
+
+{% block content %}
+<body  style="background: linear-gradient(  rgb(220, 142, 220), rgba(56, 56, 102, 0.811))"></body>
+
+
+<div class="card modal-footer animate__animated animate__fadeInRight" style="width: 35rem; margin: 20px; margin-left: 340px ;">
+    <div class="card-body text-light text-center">
+        <img src="{{ server.image.url }}" width="50% " class="rounded-4 " />
+            <h1>{{ server.title }}</h1>
+            <h3>{{ server.description }}</h3>
+            <h6 style=" margin-bottom: 50px;">{{server.created_at}}</h6>
+            {% if request.user.is_authenticated %}
+            <form action="{% url 'server_app:server_detail_view' server.id %}" method="post" >
+                {% csrf_token %}
+                <textarea  class="form-control mt-2 " name="description_user"  placeholder="Your Oeder" style="width: 300px; text-align: center; margin-left: 110px;"></textarea>
+                <input class=" btn-primary mt-2" type="submit" value="Add Order" onclick="alert('Added successfully!')" style=" width: 62%;height: 45px;background: #162938;border: none;outline: none;border-radius: 10px;cursor: pointer;font-size: 1em;color: white;font-weight: 500;" />
+            </form>
+            {% else %}
+            <div class="p-4">
+                <h5>To comment, Please <a href="{% url 'accounts:login_user_view' %}">sign in</a> , or <a href="{% url 'accounts:register_user_view' %}">sign up</a> </h5>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+</div>
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Book</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete <span class="fw-bold">{{new.title}}</span> ? 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="{% url 'server_app:server_delete_view' server.id %}"  class="btn btn-danger">Yes, Delete!</a>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+
+
+  {% endblock %}
+ 
