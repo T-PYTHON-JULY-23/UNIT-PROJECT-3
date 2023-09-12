@@ -1,0 +1,35 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Add Service {% endblock %}
+
+
+{% block content %}
+<div class="container mt-3">
+    
+    <h2>Add Recipes</h2>
+    <form action="{% url 'service:update_serv' service.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %} 
+            <div class="mb-3 mt-3">
+                <label for="title">Title service:</label>
+                <input class="form-control" rows="5"  name="title" placeholder="" value="{{service.title}}"></input>
+            </div>
+           
+            
+        <div class="mb-3 mt-3">
+            <label for="description">description:</label>
+            <textarea class="form-control" rows="5"  name="description" placeholder="">
+                {{service.description}}
+            </textarea>
+        </div>
+      
+         
+            <div class="mb-3">
+                <img src={{service.image.url}} width="150px"/>
+                <label for="formFile" class="form-label">Choose picture</label>
+                <input class="form-control" type="file" name="image" id="formFile">
+              </div>
+
+            <input type="submit" value="Save service" class="btn btn-secondary"/>  
+        </form>
+    </div>
+{%endblock%}

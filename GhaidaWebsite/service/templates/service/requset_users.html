@@ -1,0 +1,68 @@
+{% extends 'main/base.html' %}
+
+{% block title %} users Requset  {% endblock %}
+
+
+{% block content %}
+<h3 class="row justify-content-center bg-light p-5 mb-5 ">Users Request </h3>
+<div class="container-md col-9 mb-5">
+
+
+
+            <table class="table  ">
+        
+            <thead>
+            <tr>
+                <th scope="col">user name</th>
+                <th scope="col" >Service</th>
+                
+                <th scope="col " class="">Status</th>
+               
+                
+            </tr>
+            </thead>
+            <tbody>
+        
+
+        {% for req in requests %}
+            <tr>
+                <td>{{req.user.first_name}}</td>
+                <td width="30%">{{req.service.title}}</td>
+                
+                
+                <td width="30%"> 
+                
+                
+                  <form action="{% url 'service:users_request_update'  req.id %}" method="post" >
+                        {% csrf_token %} 
+                   
+                    <div class="d-flex gap-3 align-items-center">
+                        <select name="status" class="form-select">
+                            {% for value, title in req.status_choices %}
+                                <option value="{{value}}" {% if req.status == value %} selected {% endif%}>{{title}}</option>
+                            {% endfor %}
+                        </select>
+                       
+                        <input type="submit" value="Save" class="btn btn-outline-success"/>  
+                    </div>
+                    </form>
+                    
+                    
+                    
+                                
+                                    
+            
+                </td>
+                
+               
+
+                
+            
+            </tr>
+        {%endfor%}
+            
+            </tbody>
+        </table>
+           
+</div>
+{%endblock%}
