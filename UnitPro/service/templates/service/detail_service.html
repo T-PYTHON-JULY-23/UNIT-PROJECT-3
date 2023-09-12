@@ -1,0 +1,102 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Detail Page {% endblock %}
+
+
+{% block content %}
+
+<div class="d-flex flex-column gap-2">
+    <h1>{{service.title}}</h1>
+    <div class="d-flex justify-content-end">
+        {% if request.user.is_staff %}
+        <div>
+            <a href="{% url 'service:update_view' service.id %}" class="btn btn-outline-danger">Update</a>
+            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+        </div>
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="col-4"><img src="{{ service.image.url }}" class="rounded-4 "width="150" height="150" /></div>
+        <div class="col">
+            <div>
+                <h4>{{ service.description }}</h4>
+                <p>{{ service.created_at }}</p>
+                <!--request service-->
+                <h6><a href="{% url 'service:add_request_view' service.id %}" class="btn btn-outline-danger">request</a></h6>
+
+            </div>
+        </div>
+    </div>
+    <hr />
+    <h4>Comments ( {{ service.comment_set.count }} )</h4>
+    <div class="mt-4">
+
+        {% for comment in comments %}
+            <div class="d-flex flex-column gap-1 border border-1 rounded p-4 mt-3">
+                <h4>{{comment.user.first_name}} {{comment.user.last_name}}</h4>
+                <h6>{{ comment.review }}</h6>
+                <p>{{ comment.content }}</p>
+            </div>
+            
+        {% endfor %}
+    </div>
+
+
+    <div class="row mt-4">
+        <div class="col-6">
+
+            {% if request.user.is_authenticated %}
+
+            <form action="{% url 'service:detail_view' service.id %}" method="post" >
+                {% csrf_token %}
+                <textarea  class="form-control mt-2" name="content"  placeholder="Your comment"style="background-color: #f9f0e3;"></textarea>
+
+                <label>Rating: </label>
+                <select name="rating" class="form-select" style="background-color: #f9f0e3;">
+                    {% for value, title in Comment.rating_choices %}
+                        <option value="{{value}}">{{title}}</option>
+                    {% endfor %}
+                </select>
+
+                <input class="btn btn-outline-primary mt-2" type="submit" value="Add Comment" />
+
+            </form>
+
+            {% else %}
+
+            <div class="p-4">
+                <h5>To comment, Please <a href="{% url 'account:login_user_view' %}"class="text-decoration-none"style="color: #3a7020;">sign in</a> , or <a href="{% url 'account:register_user_view' %}" class="text-decoration-none"style="color: #3a7020;">sign up</a> </h5>
+            </div>
+
+            {% endif %}
+
+        </div>
+    </div>
+
+    
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Book</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete <span class="fw-bold">{{service.title}} service</span> ? 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="{% url 'service:delete_view' service.id %}"  class="btn btn-danger">Yes, Delete!</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End  Modal -->
+
+
+{% endblock %}

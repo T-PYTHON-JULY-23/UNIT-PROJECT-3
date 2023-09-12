@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+
+{% block title %} Creating Service Page {% endblock %}
+
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-md-6 ">
+        <h2>Creating Service:</h2>
+
+        <form  action="{% url 'service:create_view' %}" method="post" enctype="multipart/form-data" class="d-flex flex-column gap-2">
+            {% csrf_token %} 
+            <label>Type of service: </label>
+            <select name="title" class="form-select" style="background-color: #f9f0e3;">
+                {% for value, title in Service.service_choices %}
+                    <option value="{{value}}">{{title}}</option>
+                {% endfor %}
+            </select>
+            
+            <label>Description: </label>
+            <textarea name="description" class="form-control"style="background-color: #f9f0e3;"></textarea> 
+
+
+            <label>Choose Image: </label>
+            <input type="file" name="image" class="form-control"style="background-color: #f9f0e3;"/>
+
+
+    
+            <input type="submit" value="Create"class="btn " style="background-color: #f1683e;"/>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
