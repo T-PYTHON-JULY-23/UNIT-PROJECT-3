@@ -1,0 +1,101 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} <title> Datal for {{detail_service.title}} </title> {% endblock %}
+
+
+
+{% block content %}
+
+<div class=" detail_service_page m-0">
+</div>
+
+<div class="row detail_service_content mt-3">
+  <div class="row">
+    <div class="col ms-3 ps-4">
+      <img src="{{ detail_service.image.url }}" class="w-100" />
+      <div class="mt-4"> 
+        {% if request.user.is_staff%}
+        <a href="{% url 'services:ubdate_service_page_view' detail_service.id %}" class="btn" style="background-color:rgb(168, 128, 55);color: white;"> Update </a>
+        <button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteModal"> Delet  </button>
+        {% endif %}
+    </div>
+    </div> 
+
+
+
+
+    <div class="col-8 ">
+
+      <h1 style="color: rgb(139,69,19);"> {{detail_service.title}} </h1> 
+      <h6 style="color: rgb(139,69,19);">  <b> publish date: </b> {{detail_service.created_at}} </h6> 
+      <b style="color: rgb(139,69,19);"> Discription of service </b>  <p style="font-size: 20px;"> {{detail_service.description}} </p> 
+
+      <form action="{% url 'services:detail_service_page_view' detail_service.id %}" method="post">
+        {% csrf_token %}
+
+        {% if request.user.is_authenticated and not request.user.is_staff %}
+        
+          <textarea  class="form-control mt-2" name="pro_discription"  placeholder=" to request service please describe your problem"></textarea>
+           <a href="{% url 'main:home_page_view' %}"> 
+              <input  class="btn mt-2" type="submit" style="background-color: rgb(168, 128, 55); color: white;" value="Request the service" />
+           </a>
+        {% elif not request.user.is_staff  %}
+          <h5>To request this service, Please <a class="bottom"  href="{% url 'accounts:login_page_view' %}"> ,<b>log in </b> </a> , or <a class="bottom" href="{% url 'accounts:register_page_view' %}"> <b>sign in </b></a> </h5>
+        {% endif %}
+      </form>
+
+    </div>
+  </div>
+
+
+  
+  <div class="row">
+    <div class="col">
+    </div>
+  </div>
+
+</div>
+
+<div class=" detail_service_page1 m-0">
+  <div class="row">
+      <div class="col"> 
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<!--  model delet  -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Delete service </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h5>Are you sure you want to delete </h5> <span class="fw-bold"> <h5>  service: {{detail_service.title}} ? </h5> </span>  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <a href="{% url 'services:delet_service_view' detail_service.id %}" class="btn btn-danger">Yes, Delete!</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!---->
+
+{% endblock %}

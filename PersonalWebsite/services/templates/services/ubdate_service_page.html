@@ -1,0 +1,67 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} <title> Update Servise </title> {% endblock %}
+
+{% block background %}
+
+<div style="background-image: url(/static/images/add_servisec.jpeg);">
+     
+</div>
+
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="main-container_service">
+        <div class="left">
+            <div class="text-content ps-5">
+                <div class="row d-flex justify-content-center marging">
+                    <div class="col">
+                        <div class="d-flex justify-content-center align-items-center flex-column pt-4 font_style3 border border-4 border-light p-5  mt-4 mb-4 rounded-bottom rounded-top"> 
+                            <h1> <b>Ubdate service </b> </h1> 
+                            <form action="{% url 'services:ubdate_service_page_view' service_ubdate.id %}" method="post" enctype="multipart/form-data" class="d-flex flex-column justify-content-center align-items-center">
+                                {% csrf_token %} 
+                
+                                <label style="font-size: 20px;"> Title </label>
+                                <input size="40" type="text" name="title" class="form-control" value="{{service_ubdate.title}}">
+                
+                
+                                <label style="font-size: 20px;"> description </label>
+                                <textarea name="description" class="form-control"> {{service_ubdate.description}} </textarea> 
+                
+                
+                                <label style="font-size: 20px;"> Category </label>
+                                <select  name="category" class="form-control">
+                                    <option value="selected">Choose a category</option>
+                                    {%for value,title in service_ubdate.category_choices %} 
+                                    <option value="{{value}}" {% if  service_ubdate.category == value %} selected {% endif%} > {{title}}</option>
+                                    {%endfor%}
+                                </select>
+
+
+                
+                                <label style="font-size: 20px;"> Current Image </label>
+                                <img width="200" height="200" src="{{ service_ubdate.image.url }}"  class="rounded-4 border border-1 object-fit-cover " />
+
+
+
+
+                                <label style="font-size: 20px;"> Choose image </label>
+                                <input type="file" name="image" class="form-control mt-3"/>
+
+
+                                <input  type="submit"  value="Ubdate service" class="btn btn-light btn-lg mt-3 font_style3">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="right">
+        </div>
+    </div>
+  
+{% endblock %}

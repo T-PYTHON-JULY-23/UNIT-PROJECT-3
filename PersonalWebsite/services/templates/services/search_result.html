@@ -1,0 +1,44 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} <title> Search Result </title> {% endblock %}
+
+
+{% block background %}
+
+<div class="background effect" style="background-image: url('/static/images/pexels-photo-4517098.jpeg')">
+
+</div>
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="d-flex justify-content-between marging ms-4">
+        <h1> Search Results for "<span style="color: rgb(168, 128, 55) ;"> {{ request.GET.search }} </span>"</h1>
+    </div>
+ 
+
+    <div class="row marging ms-4 ">
+        {% for service in service %}
+            <div class="col mt-4">
+                <div class="d-flex flex-column"> 
+                    <div class="card object-fit" style="width: 20rem; height: 24rem; background-color:white">
+                        <img class="card-img-top object-fit-cover" src="{{service.image.url}} " alt="Card image cap">
+                        <div class="card-body" >
+                            <div class="card_style_act"> 
+                                <h2> {{service.title}} </h2>
+                                <p> </p>
+                                <h4>  {{service.category}} </h4>
+                                <a href="{% url 'services:detail_service_page_view' service.id%}" style="background-color: rgb(168, 128, 55); color: white;"  class="btn " ><b> for more datal </b> </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}    
+    </div>
+
+
+{% endblock %}

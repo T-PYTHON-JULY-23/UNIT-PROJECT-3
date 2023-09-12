@@ -1,0 +1,58 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} <title> Service request </title> {% endblock %}
+
+
+
+
+
+{% block content %}
+
+    <div class=" detail_service_page m-0">
+    </div>
+
+    <div class="row detail_service_content mt-3">
+    <div class="row">
+        <div class="col ms-3 border border-1 border-dark ps-4">
+        <h1> {{detail_service.title}} </h1> 
+        <h6> publish date: {{detail_service.created_at}} </h6> 
+        <p> {{detail_service.description}} </p>
+        
+        {% if request.user.is_staf %}
+            <a href="{% url 'services:ubdate_service_page_view' detail_service.id %}" class="btn" style="background-color: rgb(32, 65, 32);"><h4 style="color:white"><b> Update</b>  </h4></a>
+            <button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteModal"> <h4> Delet </h4> </button>
+        {% endif %}
+        </div> 
+
+
+        <div class="col">
+        <form action="{% url 'services:detail_service_page_view' detail_service.id %}" method="post">
+            {% csrf_token %}
+
+            {% if request.user.is_authenticated %}
+            <textarea  class="form-control mt-2" name="pro_discription"  placeholder="Discription of problem"></textarea>
+            <input class="btn mt-2" type="submit"  style="background-color: rgb(168, 128, 55); color: white;" value="Request the service" />
+            {% else %}
+            <h5>To request this service, Please <a class="bottom"  href="{% url 'accounts:login_page_view' %}"> ,<b>log in </b> </a> , or <a class="bottom" href="{% url 'accounts:register_page_view' %}"> <b>sign in </b></a> </h5>
+            {% endif %}
+        </form>
+        </div>
+    </div>
+
+
+    
+    <div class="row">
+        <div class="col">
+        </div>
+    </div>
+
+    </div>
+
+    <div class=" detail_service_page m-0">
+    <div class="row">
+        <div class="col"> 
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
