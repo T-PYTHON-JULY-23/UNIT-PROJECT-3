@@ -4,7 +4,6 @@
 
 <section id="services" class="full-height px-lg-5">
     <div class="container">
-
         <div class="row pb-4" data-aos="fade-up">
             <div class="col-lg-8">
                 <h6 class="text-brand">SERVICES</h6>
@@ -27,8 +26,18 @@
                     <a href="{% url 'services:service_detail_view' service.id %}" class="link-custom">Read More</a>
                     <br>
                     <div style="padding: 10px;" >
+                    {% if request.user.is_staff %}
                     <a href="{% url 'services:service_update_view' service.id %}" class="btn btn-warning">Update</a>
                     <a href="{% url 'services:service_delete_view' service.id %}" class="btn btn-danger">Delete</a>
+                    {% endif %}
+                    <form style="display: flex; text-align: center;justify-content: center;" action="{% url 'services:add_request_view' service.id %}" method="post">
+                    
+                        {% csrf_token %}
+                        {% if request.user.is_authenticated and not request.user.is_staff  %}
+                        <input type="submit" value="Send Request" class="btn btn-primary">
+                        {% endif %}
+
+
                     
 
                 

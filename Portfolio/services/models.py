@@ -13,5 +13,5 @@ class Service(models.Model):
 class ServiceRequest(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
-    status_choise = (("Pending", "Pending"), ("in_progress", "in_progress"), ("done", "done"), ("canceled", "canceled"),)
+    status_choise = (("Pending", "Pending"), ("In progress", "In progress"), ("done", "done"), ("canceled", "canceled"),)
     status = models.CharField(max_length=300, choices=status_choise , default="Pending")

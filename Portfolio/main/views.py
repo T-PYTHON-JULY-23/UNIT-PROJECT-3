@@ -36,7 +36,7 @@ def blog_view(request: HttpRequest):
 
 def contact_view(request: HttpRequest):
     comments = Comment.objects.all()
-    if request.method == "POST" and request.user.is_staff:
+    if request.method == "POST" and request.user.is_authenticated:
         new_comment = Comment(user=request.user,subject=request.POST["subject"], message=request.POST["message"])
         new_comment.save()
 
